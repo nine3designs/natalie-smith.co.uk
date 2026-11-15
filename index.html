@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Natalie Smith — Design Portfolio</title>
 <meta name="description" content="The portfolio of Natalie Smith — websites, branding and print design made in South Yorkshire.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
 <link href="https://api.fontshare.com/v2/css?f[]=outfit@500,600,700&f[]=new-title@500&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -146,6 +147,7 @@
   .index-cell .th{margin-top:auto;padding-top:22px}
   .index-cell .th img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--paper-soft)}
   .index-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px}
+  .index-head .label{font-family:"Do Hyeon",var(--disp);letter-spacing:.08em;font-size:13px}
 
   /* ---------- project slides ---------- */
   .proj{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(36px,6vw,96px);align-items:center}
@@ -313,7 +315,6 @@
   /* ---------- project layout (mock v2) ---------- */
   .proj,.proj.flip{grid-template-columns:.94fr 1.06fr;gap:clamp(40px,6vw,90px);align-items:center}
   .carousel{position:relative;height:min(52vh,500px);display:flex;align-items:center;justify-content:center}
-  .carousel::before{content:'';position:absolute;left:-5%;right:-3%;top:9%;bottom:6%;background:var(--mist);border-radius:2px}
   .carousel img{position:absolute;width:auto;height:auto;max-width:88%;max-height:100%;object-fit:contain;opacity:0;z-index:1;
     box-shadow:0 24px 50px -22px rgba(23,75,80,.35),0 2px 8px rgba(30,35,35,.06);
     transition:opacity .8s ease;user-select:none;-webkit-user-drag:none}
@@ -322,7 +323,7 @@
   .carousel .c-dots i{width:7px;height:7px;border-radius:50%;background:rgba(23,75,80,.20);cursor:pointer;transition:background .3s,transform .3s}
   .carousel .c-dots i.on{background:var(--petrol);transform:scale(1.2)}
   .proj-img .deliverables{margin-top:48px;background:rgba(255,255,255,.65);border:1px solid var(--hair-strong);border-radius:12px;padding:16px 22px;border-left:none}
-  .proj-img .deliverables p b{font-family:var(--serif);font-weight:500;font-size:16px;color:var(--petrol);letter-spacing:0;text-transform:none;margin-bottom:6px}
+  .proj-img .deliverables p b{font-family:var(--serif);font-weight:500;font-size:48px;color:var(--petrol);letter-spacing:0;text-transform:none;margin-bottom:10px}
   .pal{border-bottom:1px solid var(--hair-strong);padding-bottom:18px;margin-top:30px}
   .proj-txt .stand{font-size:17px}
   .proj-txt .body{font-size:13.5px;line-height:1.9}
@@ -373,12 +374,12 @@
 </section>
 
 <!-- ══════════ PAGE 3 · INDEX ══════════ -->
-<section class="slide">
+<section class="slide" id="toc">
   <div class="chrome"><span></span><span class="tag">Selected Work</span></div>
   <div class="slide-inner">
     <div class="index-head">
       <span class="label">Contents</span>
-      <span class="label">06 Projects</span>
+      <span class="label">09 Projects</span>
     </div>
     <div class="index-grid rv">
       <!-- ══ TO ADD A PROJECT: copy one index cell + the project slide below ══ -->
