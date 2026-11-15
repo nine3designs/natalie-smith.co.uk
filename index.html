@@ -151,7 +151,7 @@
   .proj{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(36px,6vw,96px);align-items:center}
   .proj.flip{grid-template-columns:1.15fr 1fr}
   .proj-txt{position:relative;z-index:1}
-  .ghost{position:absolute;right:-6vw;top:-14vh;font-family:var(--serif);font-weight:500;
+  .ghost{position:absolute;right:-3vw;top:-6vh;font-family:var(--serif);font-weight:500;
     font-size:clamp(180px,22vw,320px);line-height:1;color:rgba(23,75,80,.05);pointer-events:none;user-select:none}
   .pal{display:flex;align-items:center;gap:9px;margin-top:20px}
   .pal .lbl{font-family:var(--disp);font-weight:500;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-grey);margin-right:6px}
@@ -310,25 +310,27 @@
     .behance{display:none}
   }
 
-  /* ---------- project carousels (playlist deck) ---------- */
-  .proj-img .backdrop{display:none}
-  .carousel{position:relative;height:min(60vh,560px);display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .carousel::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(23,75,80,.06),rgba(220,233,229,.25) 55%,rgba(23,75,80,.04));border-radius:4px}
-  .carousel img{position:absolute;width:auto;height:auto;max-width:72%;max-height:84%;object-fit:contain;opacity:0;z-index:0;
-    box-shadow:0 22px 48px -20px rgba(23,75,80,.38),0 2px 8px rgba(30,35,35,.08);
-    transition:opacity .75s ease,transform .75s ease,filter .75s ease;cursor:pointer;user-select:none;-webkit-user-drag:none}
-  .carousel img.on{opacity:1;transform:translateX(0) scale(1);z-index:3}
-  .carousel img.side-l{opacity:.30;transform:translateX(-44%) scale(.78);z-index:1;filter:saturate(.8)}
-  .carousel img.side-r{opacity:.30;transform:translateX(44%) scale(.78);z-index:2;filter:saturate(.8)}
-  .carousel img.off{opacity:0;transform:translateX(0) scale(.72)}
-  .carousel .c-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
-  .carousel .c-dots i{width:7px;height:7px;border-radius:50%;background:rgba(23,75,80,.22);cursor:pointer;transition:background .3s,transform .3s}
-  .carousel .c-dots i.on{background:var(--petrol);transform:scale(1.25)}
+  /* ---------- project layout (mock v2) ---------- */
+  .proj,.proj.flip{grid-template-columns:.94fr 1.06fr;gap:clamp(40px,6vw,90px);align-items:center}
+  .carousel{position:relative;height:min(52vh,500px);display:flex;align-items:center;justify-content:center}
+  .carousel::before{content:'';position:absolute;left:-5%;right:-3%;top:9%;bottom:6%;background:var(--mist);border-radius:2px}
+  .carousel img{position:absolute;width:auto;height:auto;max-width:88%;max-height:100%;object-fit:contain;opacity:0;z-index:1;
+    box-shadow:0 24px 50px -22px rgba(23,75,80,.35),0 2px 8px rgba(30,35,35,.06);
+    transition:opacity .8s ease;user-select:none;-webkit-user-drag:none}
+  .carousel img.on{opacity:1}
+  .carousel .c-dots{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
+  .carousel .c-dots i{width:7px;height:7px;border-radius:50%;background:rgba(23,75,80,.20);cursor:pointer;transition:background .3s,transform .3s}
+  .carousel .c-dots i.on{background:var(--petrol);transform:scale(1.2)}
+  .proj-img .deliverables{margin-top:48px;background:rgba(255,255,255,.65);border:1px solid var(--hair-strong);border-radius:12px;padding:16px 22px;border-left:none}
+  .proj-img .deliverables p b{font-family:var(--serif);font-weight:500;font-size:16px;color:var(--petrol);letter-spacing:0;text-transform:none;margin-bottom:6px}
+  .pal{border-bottom:1px solid var(--hair-strong);padding-bottom:18px;margin-top:30px}
+  .proj-txt .stand{font-size:17px}
+  .proj-txt .body{font-size:13.5px;line-height:1.9}
   @media (max-width:980px){
     .carousel{height:min(46vh,400px)}
-    .carousel img{max-width:86%;max-height:78%}
-    .carousel img.side-l{opacity:0;transform:translateX(-30%) scale(.7)}
-    .carousel img.side-r{opacity:0;transform:translateX(30%) scale(.7)}
+    .carousel img{max-width:96%}
+    .carousel .c-dots{bottom:-26px}
+    .proj-img .deliverables{margin-top:44px}
   }
   @media (prefers-reduced-motion:reduce){.carousel img{transition:none !important}}
   @media print{.carousel img:not(.on){display:none}.carousel{height:auto}.carousel::before{display:none}.carousel .c-dots{display:none}.carousel img.on{position:relative;max-width:100%}}
@@ -436,14 +438,16 @@
 <img class="on" src="https://natalie-smith.co.uk/beautybothy-main.jpg" alt="The Beauty Bothy brand identity">
 <img src="https://nine3designs.co.uk/assets/images/portfolio/beautybothy-2.jpg" alt="The Beauty Bothy brand detail">
 <img src="https://nine3designs.co.uk/assets/images/portfolio/beautybothy-3.jpg" alt="The Beauty Bothy application">
-</div></div>
+</div>
+<div class="deliverables"><p><b>Deliverables</b>Brand identity · Graphic elements · Colour &amp; type system · Application mockups</p></div>
+</div>
       <div class="proj-txt rv">
         <span class="ghost">01</span>
         <span class="pnum">01 / 09</span>
         <h3>The Beauty Bothy</h3>
         <p class="stand">An editorial beauty brand with a softer, more luxurious feel.</p>
         <p class="body">The Beauty Bothy wanted to step away from the usual beauty-salon look. The identity pairs <b>elegant typography</b> with <b>deep navy and warm champagne,</b> brought together by a delicate <b>dandelion-inspired</b> graphic that adds movement and lightness. Polished but never cold, with the softness running through everything from price lists to social.</p>
-        <div class="deliverables"><p><b>Deliverables</b>Brand identity · Graphic elements · Colour &amp; type system · Application mockups</p></div>
+
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#F5F4F3"></span><span class="dot" style="background:#ACA49A"></span><span class="dot" style="background:#4F4E56"></span><span class="dot" style="background:#363946"></span><span class="dot" style="background:#2C2324"></span></div>
         <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
@@ -465,7 +469,7 @@
         <h3>Tails &amp; Tides</h3>
         <p class="stand">A fresh coastal identity, drawn straight from the sea.</p>
         <p class="body">A coastal identity built on <b>bold typography</b>, playful details and a calm ocean palette of <b>deep teal, aqua and soft neutrals</b> alongside imagery pulled from the sea. Adventurous but relaxed, made for the outdoors without losing its polish. Custom typographic details and supporting graphics give the identity <b>personality,</b> while keeping the overall look clean and contemporary.</p>
-        <div class="deliverables"><p><b>Deliverables</b>Logo &amp; wordmark · Custom type details · Palette system · Brand applications</p></div>
+
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#EEF0EE"></span><span class="dot" style="background:#9FC8E5"></span><span class="dot" style="background:#305261"></span><span class="dot" style="background:#A2A09B"></span><span class="dot" style="background:#615C56"></span></div>
         <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
@@ -473,7 +477,9 @@
 <img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/tails-main.jpg" alt="Tails and Tides identity">
 <img src="https://nine3designs.co.uk/assets/images/portfolio/tails-2.jpg" alt="Tails and Tides brand detail">
 <img src="https://nine3designs.co.uk/assets/images/portfolio/tails-3.jpg" alt="Tails and Tides application">
-</div></div>
+</div>
+<div class="deliverables"><p><b>Deliverables</b>Logo &amp; wordmark · Custom type details · Palette system · Brand applications</p></div>
+</div>
     </div>
   </div>
   <span class="pagenum">Page 6</span>
@@ -490,14 +496,16 @@
 <img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/nordkustcoffee.jpg" alt="Nordkust Coffee identity">
 <img src="https://natalie-smith.co.uk/nordkust.jpg" alt="Nordkust Coffee branded cups — crafted in the north">
 <img src="https://natalie-smith.co.uk/nordkust2.jpg" alt="Nordkust Coffee takeaway bag and cups">
-</div></div>
+</div>
+<div class="deliverables"><p><b>Deliverables</b>Identity design · Packaging · Graphic details · Brand applications</p></div>
+</div>
       <div class="proj-txt rv">
         <span class="ghost">03</span>
         <span class="pnum">03 / 09</span>
         <h3>Nordkust Coffee</h3>
         <p class="stand">Scandinavian-inspired branding with a strong sense of place.</p>
         <p class="body">For Nordkust Coffee we leaned into <b>coastal Nordic influences</b>, <b>strong type,</b> a restrained palette and graphic details that carry the feel across everything from bags to shop signage. The result is a coffee brand with a real <b>sense of place:</b> calm and confident, and easy to spot on a shelf.</p>
-        <div class="deliverables"><p><b>Deliverables</b>Identity design · Packaging · Graphic details · Brand applications</p></div>
+
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#E8E3E0"></span><span class="dot" style="background:#D1A89E"></span><span class="dot" style="background:#A52020"></span><span class="dot" style="background:#5B5E63"></span><span class="dot" style="background:#A2A0A0"></span></div>
         <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
@@ -519,7 +527,7 @@
         <h3>E Squared Coffee Corner</h3>
         <p class="stand">A bold, welcoming identity for a local coffee shop with personality.</p>
         <p class="body">A full branding project covering identity design through to signage and product mockups. At the centre sits a <b>bold, condensed serif wordmark</b>, E SQUARED, with a <b>coffee-bean detail worked into the O,</b> a hand-drawn cup icon and an “EST. 2026” subline for a grounded, established feel despite being a new opening. A circular “COFFEE CORNER” ring wraps the mark, built to work on <b>round signage</b> as well as cup stickers and packaging.</p>
-        <div class="deliverables"><p><b>Deliverables</b>Logo &amp; wordmark · Signage artwork · Cup stickers &amp; packaging · Icon set</p></div>
+
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#F8F8F8"></span><span class="dot" style="background:#9B9B9B"></span><span class="dot" style="background:#505051"></span><span class="dot" style="background:#3E3E40"></span><span class="dot" style="background:#27272A"></span></div>
         <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
@@ -527,7 +535,9 @@
 <img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/esquaredbrand.jpg" alt="ESquared Coffee identity">
 <img src="https://nine3designs.co.uk/assets/images/portfolio/esquared-2.jpg" alt="ESquared Coffee brand detail">
 <img src="https://nine3designs.co.uk/assets/images/portfolio/esquared-3.jpg" alt="ESquared Coffee application — hanging round sign">
-</div></div>
+</div>
+<div class="deliverables"><p><b>Deliverables</b>Logo &amp; wordmark · Signage artwork · Cup stickers &amp; packaging · Icon set</p></div>
+</div>
     </div>
   </div>
   <span class="pagenum">Page 8</span>
@@ -544,14 +554,16 @@
 <img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/aas1.webp" alt="Advanced Assessment and Solutions website redesign">
 <img src="https://nine3designs.co.uk/assets/images/portfolio/aas2.webp" alt="Advanced Assessment and Solutions business cards">
 <img src="https://nine3designs.co.uk/assets/images/portfolio/aas3.webp" alt="Advanced Assessment and Solutions website on a phone">
-</div></div>
+</div>
+<div class="deliverables"><p><b>Deliverables</b>Logo rebuild · Brand refresh · Social graphics · Full website design &amp; build</p></div>
+</div>
       <div class="proj-txt rv">
         <span class="ghost">05</span>
         <span class="pnum">05 / 09</span>
         <h3>Advanced Assessment &amp; Solutions</h3>
         <p class="stand">A brand refresh and full website rebuild, from Canva hold-together to a presence Sara is proud of.</p>
         <p class="body">Sara came to Nine3Designs after a run of disappointing experiences with previous designers. Her website was a basic Canva build that no longer reflected the professionalism of her role, and she had no way to access or manage her own domain. We began with the foundations: her <b>logo rebuilt as a clean, scalable version,</b> a considered colour palette in place of the muted greys, and social graphics for a consistent look. Then the biggest step, a <b>complete website rebuild, fully under her control</b> and consistent with her wider branding.</p>
-        <div class="deliverables"><p><b>Deliverables</b>Logo rebuild · Brand refresh · Social graphics · Full website design &amp; build</p></div>
+
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#E9EAEB"></span><span class="dot" style="background:#9E9890"></span><span class="dot" style="background:#92887C"></span><span class="dot" style="background:#625E5A"></span><span class="dot" style="background:#151B25"></span></div>
         <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
@@ -573,7 +585,7 @@
 <h3>Coco Cafe</h3>
 <p class="stand">A warm, beachy coffee brand — coffee for everyday.</p>
 <p class="body">Coco Cafe is a <b>coastal coffee brand</b> built around a laid-back, everyday feel — <b>coffee for everyday.</b> A hand-drawn <b>palm and coconut mark</b> sits inside a soft arch, pairing relaxed line work with <b>warm sand and cream tones.</b> The identity flexes easily across <b>cups, tote bags and social,</b> staying friendly and unfussy at every size. The result feels like a little piece of the beach in every cup — <b>warm, easy-going</b> and instantly recognisable.</p>
-<div class="deliverables"><p><b>Deliverables</b>Logo suite · Logo variations · Cup branding · Merchandise · Social content</p></div>
+
 <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#C9995F"></span><span class="dot" style="background:#F1E6D2"></span><span class="dot" style="background:#4A3527"></span><span class="dot" style="background:#B0472F"></span></div>
 <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
 </div>
@@ -583,7 +595,9 @@
 <img src="https://natalie-smith.co.uk/cococafe-3.jpg" alt="Coco Cafe branded cups on the beach">
 <img src="https://natalie-smith.co.uk/cococafe-4.jpg" alt="Coco Cafe tote bag and iced coffee">
 <img src="https://natalie-smith.co.uk/cococafe-5.jpg" alt="Coco Cafe social media reveal">
-</div></div>
+</div>
+<div class="deliverables"><p><b>Deliverables</b>Logo suite · Logo variations · Cup branding · Merchandise · Social content</p></div>
+</div>
 </div>
 </div>
 <span class="pagenum">Page 10</span>
@@ -600,14 +614,16 @@
 <h3>Duachy Apartments</h3>
 <p class="stand">A premium monogram for an elevated guest experience.</p>
 <p class="body">Duachy Apartments needed an identity that felt <b>premium</b> from the very first glance. A <b>deep green monogram</b> — an eagle formed from interlocking letterforms — sets a <b>confident, boutique tone,</b> carried through a full <b>guest experience:</b> guest guides, luggage tags, amenity bottles and coasters. <b>Gold detailing</b> against the rich green keeps everything feeling considered and high-end — apartment stays that feel closer to a <b>boutique hotel</b> than a rental.</p>
-<div class="deliverables"><p><b>Deliverables</b>Logo suite · Guest guide · Luggage tags · Amenity labels · Coasters</p></div>
+
 <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#2A5240"></span><span class="dot" style="background:#B7965A"></span><span class="dot" style="background:#EDEDE6"></span><span class="dot" style="background:#C8CCC8"></span></div>
 <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
 </div>
 <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
 <img class="on" src="https://natalie-smith.co.uk/duachy-main.jpg" alt="Duachy Apartments logo design">
 <img src="https://natalie-smith.co.uk/duachy-2.jpg" alt="Duachy Apartments guest stationery and amenities">
-</div></div>
+</div>
+<div class="deliverables"><p><b>Deliverables</b>Logo suite · Guest guide · Luggage tags · Amenity labels · Coasters</p></div>
+</div>
 </div>
 </div>
 <span class="pagenum">Page 11</span>
@@ -624,7 +640,7 @@
 <h3>Lopwiel</h3>
 <p class="stand">An outdoor brand built to move — from app icon to adventure kit.</p>
 <p class="body">Lopwiel is an outdoor brand built around the descent — <b>start the descent</b> and keep going. The mark pairs a <b>mountain peak</b> with a flowing downhill line in a single icon that works just as hard at <b>app-icon size</b> as it does embossed on a <b>bottle</b> or set against landscape photography. A fresh palette of <b>deep green, mist and porcelain</b> keeps the brand airy and modern. Clean, versatile and quietly confident — ready to grow across <b>app, merchandise</b> and the mountains themselves.</p>
-<div class="deliverables"><p><b>Deliverables</b>Logo suite · App icon · Bottle &amp; merchandise · Brand guidelines</p></div>
+
 <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#2E4632"></span><span class="dot" style="background:#DCE9E5"></span><span class="dot" style="background:#101418"></span><span class="dot" style="background:#9BC8C4"></span></div>
 <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
 </div>
@@ -632,7 +648,9 @@
 <img class="on" src="https://natalie-smith.co.uk/lopwiel-main.jpg" alt="Lopwiel brand identity suite">
 <img src="https://natalie-smith.co.uk/lopwiel-2.jpg" alt="Lopwiel mobile app icon">
 <img src="https://natalie-smith.co.uk/lopwiel-3.jpg" alt="Lopwiel branded bottle mockup">
-</div></div>
+</div>
+<div class="deliverables"><p><b>Deliverables</b>Logo suite · App icon · Bottle &amp; merchandise · Brand guidelines</p></div>
+</div>
 </div>
 </div>
 <span class="pagenum">Page 12</span>
@@ -649,7 +667,7 @@
 <h3>Tevuna Law</h3>
 <p class="stand">A confident, modern mark for real attorneys and flat-fee clarity.</p>
 <p class="body">Tevuna Law is a legal brand built on <b>straight answers</b> and <b>clear pricing.</b> The mark draws on classical architecture — a stylised <b>column portico</b> — giving the identity instant <b>authority</b> and a sense of establishment, while clean geometric line work keeps it <b>modern</b> rather than traditional. Deep navy sets a <b>serious, trustworthy tone,</b> lifted by a strong blue that feels sharp and approachable. Paired with bold, spaced capitals and the positioning line <b>'Real attorneys | Strategic answers | Flat fees',</b> the result is a logo that feels solid, direct and built on trust.</p>
-<div class="deliverables"><p><b>Deliverables</b>Logo suite · Flyer · Reception signage · Brand guidelines</p></div>
+
 <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#1C2B3A"></span><span class="dot" style="background:#4E93C9"></span><span class="dot" style="background:#BFD9E8"></span><span class="dot" style="background:#FFFFFF"></span></div>
 <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
 </div>
@@ -657,7 +675,9 @@
 <img class="on" src="https://natalie-smith.co.uk/tevuna-main.jpg" alt="Tevuna Law logo design">
 <img src="https://natalie-smith.co.uk/tevuna-2a.jpg" alt="Tevuna Law flyer design">
 <img src="https://natalie-smith.co.uk/tevuna-2b.jpg" alt="Tevuna Law reception signage">
-</div></div>
+</div>
+<div class="deliverables"><p><b>Deliverables</b>Logo suite · Flyer · Reception signage · Brand guidelines</p></div>
+</div>
 </div>
 </div>
 <span class="pagenum">Page 13</span>
