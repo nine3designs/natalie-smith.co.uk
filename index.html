@@ -315,7 +315,7 @@
   /* ---------- project layout (mock v2) ---------- */
   .proj,.proj.flip{grid-template-columns:.94fr 1.06fr;gap:clamp(40px,6vw,90px);align-items:center}
   .carousel{position:relative;height:min(52vh,500px);display:flex;align-items:center;justify-content:center}
-  .carousel img{position:absolute;width:auto;height:auto;max-width:88%;max-height:100%;object-fit:contain;opacity:0;z-index:1;
+  .carousel img{position:absolute;width:auto;height:auto;max-width:92%;max-height:100%;aspect-ratio:auto;background:none;object-fit:contain;opacity:0;z-index:1;
     box-shadow:0 24px 50px -22px rgba(23,75,80,.35),0 2px 8px rgba(30,35,35,.06);
     transition:opacity .8s ease;user-select:none;-webkit-user-drag:none}
   .carousel img.on{opacity:1}
