@@ -335,6 +335,54 @@
   }
   @media (prefers-reduced-motion:reduce){.carousel img{transition:none !important}}
   @media print{.carousel img:not(.on){display:none}.carousel{height:auto}.carousel::before{display:none}.carousel .c-dots{display:none}.carousel img.on{position:relative;max-width:100%}}
+
+  /* ---------- mobile rework ---------- */
+  @media (max-width:740px){
+    .slide{min-height:auto;padding:88px 22px 110px}
+    .slide#top,.slide#contact{min-height:100vh}
+    .chrome{padding:16px 22px;font-size:9.5px}
+    .pagenum{display:none}
+
+    /* deck nav */
+    .deck-nav{bottom:14px;right:14px;gap:10px}
+    .deck-btn{width:42px;height:42px;box-shadow:0 2px 10px rgba(30,35,35,.10)}
+    .deck-nav .count{display:none}
+
+    /* contents */
+    .index-head{margin-bottom:18px}
+    .index-head .label{font-size:11px}
+    .index-grid{grid-template-columns:1fr}
+    .index-cell{min-height:0;padding:24px 20px 20px;border-right:none}
+    .index-cell .n{font-size:22px;margin-bottom:12px}
+    .index-cell .nm{font-size:24px;margin-bottom:6px}
+    .index-cell .ct{font-size:10.5px}
+    .index-cell .th{padding-top:18px}
+    .index-cell .th img{aspect-ratio:16/10}
+
+    /* project slides — stack */
+    .proj,.proj.flip{grid-template-columns:1fr;gap:30px;align-items:start}
+    .ghost{font-size:150px;top:-3vh;right:-4vw}
+    .pnum{font-size:9.5px;padding:6px 12px;margin-bottom:16px}
+    .proj-txt h3{font-size:38px;margin-bottom:14px}
+    .proj-txt .stand{font-size:16.5px;margin-bottom:14px}
+    .proj-txt .body{font-size:14px;line-height:1.85}
+    .pal{margin-top:22px;padding-bottom:14px}
+    .behance{margin-top:22px}
+
+    .carousel{height:min(52vh,440px)}
+    .carousel img{max-width:100%}
+    .carousel .c-dots{bottom:-24px}
+    .proj-img .deliverables{margin-top:56px;padding:22px 24px 24px;border-radius:14px}
+    .proj-img .deliverables p b{font-size:26px;margin-bottom:12px}
+    .deliverables p{font-size:13.5px;line-height:1.9}
+
+    /* misc sections */
+    .svc-grid{grid-template-columns:1fr}
+    .how-grid{grid-template-columns:1fr}
+    .fullbleed{height:38vh;margin-left:-22px;margin-right:-22px}
+    .welcome-h{font-size:34px}
+    .intro-serif{font-size:28px}
+  }
 </style>
 </head>
 <body>
