@@ -134,7 +134,7 @@
   .intro-facts span:last-child{color:var(--ink);font-weight:500}
 
   /* ---------- index grid ---------- */
-  .index-grid{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--hair)}
+  .index-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--hair)}
   .index-cell{
     padding:32px 22px 26px;border-right:1px solid var(--hair);text-decoration:none;
     display:flex;flex-direction:column;min-height:360px;transition:background .25s;
@@ -143,9 +143,9 @@
   .index-cell:hover{background:var(--paper-soft)}
   .index-cell .n{font-family:var(--disp);font-weight:500;font-size:27px;letter-spacing:.02em;margin-bottom:40px}
   .index-cell .nm{font-family:var(--serif);font-weight:500;font-size:clamp(23px,2vw,30px);line-height:1.2;margin-bottom:8px}
-  .index-cell .ct{font-family:var(--disp);font-weight:500;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-grey)}
+  .index-cell .ct{font-family:"Do Hyeon",var(--disp);font-weight:400;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-grey)}
   .index-cell .th{margin-top:auto;padding-top:22px}
-  .index-cell .th img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--paper-soft)}
+  .index-cell .th img{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--paper-soft)}
   .index-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px}
   .index-head .label{font-family:"Do Hyeon",var(--disp);letter-spacing:.08em;font-size:13px}
 
@@ -160,7 +160,7 @@
   .pal .dot{width:20px;height:20px;border-radius:50%;border:1px solid rgba(30,35,35,.12)}
   .proj-txt .pnum{font-family:var(--disp);font-weight:500;font-size:10.5px;color:var(--petrol);letter-spacing:.16em;margin-bottom:24px;display:inline-block;
     border:1px solid rgba(23,75,80,.28);border-radius:999px;padding:7px 14px}
-  .proj-txt h3{font-family:var(--serif);font-weight:500;font-size:clamp(46px,6.2vw,92px);line-height:1.04;margin-bottom:22px}
+  .proj-txt h3{font-family:var(--serif);font-weight:500;font-size:clamp(46px,6.2vw,92px);line-height:1.04;margin-bottom:22px;color:#2A6A70}
   .proj-txt .stand{font-size:15px;line-height:1.65;color:var(--ink);font-weight:500;margin-bottom:18px;max-width:40ch}
   .proj-txt .body{font-size:12.5px;line-height:1.95;color:var(--ink-grey);max-width:46ch}
   .deliverables{margin-top:32px;background:rgba(220,233,229,.35);border-radius:14px;padding:18px 20px;border-left:2px solid var(--petrol)}
@@ -206,8 +206,13 @@
     transition:transform .25s ease,box-shadow .25s ease}
   .svc:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(23,75,80,.13)}
   .svc .n{font-family:var(--disp);font-weight:500;font-size:11px;color:var(--petrol);letter-spacing:.14em;display:block;margin-bottom:26px}
-  .svc h4{font-family:var(--serif);font-weight:500;font-size:26px;margin-bottom:8px}
-  .svc p{font-size:12.5px;line-height:1.8;color:var(--ink-grey)}
+  .svc h4{font-family:var(--serif);font-weight:500;font-size:30px;margin-bottom:10px}
+  .svc p{font-size:13.5px;line-height:1.8;color:var(--ink-grey)}
+  @keyframes dissolve{from{opacity:0;filter:blur(8px);transform:translateY(10px)}to{opacity:1;filter:blur(0);transform:none}}
+  .svc h4,.svc p{opacity:0}
+  .svc-grid.in .svc h4{animation:dissolve .8s ease .12s forwards}
+  .svc-grid.in .svc p{animation:dissolve .8s ease .32s forwards}
+  .big-title em{color:#2A6A70}
   .big-title{font-family:var(--serif);font-weight:500;font-size:clamp(44px,5.6vw,80px);line-height:1;margin-bottom:clamp(28px,4vh,44px)}
   .gr-link{display:inline-block;margin-top:34px;font-family:var(--disp);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--petrol);text-decoration:none;border-bottom:1px solid var(--petrol);padding-bottom:3px}
 
@@ -223,9 +228,9 @@
   }
   .contact-rows a:hover{padding-left:8px;color:#9BC8C4}
   .contact-rows .lbl{font-family:var(--disp);font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,241,232,.55)}
-  .close-note{font-size:13px;line-height:2;color:rgba(245,241,232,.78);max-width:40ch;
+  .close-note{font-size:15.5px;line-height:2;color:rgba(245,241,232,.82);max-width:54ch;
     background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:18px;
-    padding:30px 30px 32px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    padding:38px 42px 40px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
   .close-note b{display:inline-block}
 
   /* ---------- fresh work grid ---------- */
@@ -279,7 +284,8 @@
     color:var(--ink-grey);opacity:.8;transition:opacity .6s;pointer-events:none;
   }
   @media (max-width:980px){.deck-hint{display:none}}
-  @media print{.progress,.deck-nav,.deck-hint{display:none}}
+  @media print{.progress,.deck-nav,.deck-hint{display:none}.svc h4,.svc p{opacity:1 !important;animation:none !important}}
+  @media (prefers-reduced-motion:reduce){.svc h4,.svc p{opacity:1;animation:none}}
 
   /* ---------- responsive ---------- */
   @media (max-width:980px){
@@ -323,7 +329,7 @@
   .carousel .c-dots i{width:7px;height:7px;border-radius:50%;background:rgba(23,75,80,.20);cursor:pointer;transition:background .3s,transform .3s}
   .carousel .c-dots i.on{background:var(--petrol);transform:scale(1.2)}
   .proj-img .deliverables{margin-top:48px;background:rgba(255,255,255,.65);border:1px solid var(--hair-strong);border-radius:12px;padding:16px 22px;border-left:none}
-  .proj-img .deliverables p b{font-family:var(--serif);font-weight:500;font-size:30px;color:var(--petrol);letter-spacing:0;text-transform:none;margin-bottom:10px}
+  .proj-img .deliverables p b{font-family:var(--serif);font-weight:500;font-size:40px;color:var(--petrol);letter-spacing:0;text-transform:none;margin-bottom:10px}
   .pal{border-bottom:1px solid var(--hair-strong);padding-bottom:18px;margin-top:30px}
   .proj-txt .stand{font-size:17px}
   .proj-txt .body{font-size:13.5px;line-height:1.9}
@@ -454,7 +460,7 @@
     <div class="nat-grid">
       <div class="nat-photo rv"><img src="natalie.png" alt="Natalie, founder of Nine3Designs"></div>
       <div class="rv">
-        <h3 class="nat-h">I'm <em>Natalie.</em></h3>
+        <h3 class="nat-h">Hi, I'm <em>Natalie.</em></h3>
         <p class="nat-body">Brand <b>designer</b> and <b>founder</b> of Nine3Designs. An independent creative studio in <b>Sheffield,</b> South Yorkshire. I take projects from the very <b>first</b> brief and creative concept through to finished artwork and delivery, combining <b>strong visual design</b> with practical commercial <b>thinking.</b></p>
         <p class="nat-body" style="margin-top:14px">Running my own studio has given me hands-on experience across the <b>full creative process</b>: understanding what a business actually <b>needs,</b> developing <b>concepts,</b> presenting and <b>refining</b> the work, and getting everything production-ready. That mix of creative and commercial <b>experience</b> means I understand the brief &amp; the practical realities behind it, so projects land <b>on time, on budget</b> and with <b>clear communication</b> throughout.</p>
       </div>
@@ -488,7 +494,7 @@
 <img src="https://nine3designs.co.uk/assets/images/portfolio/beautybothy-2.jpg" alt="The Beauty Bothy brand detail">
 <img src="https://nine3designs.co.uk/assets/images/portfolio/beautybothy-3.jpg" alt="The Beauty Bothy application">
 </div>
-<div class="deliverables"><p><b>Deliverables</b>Brand identity · Graphic elements · Colour &amp; type system · Application mockups</p></div>
+<div class="deliverables"><p><b>Deliverables</b>Logo Design &amp; Brand Identity · Social Media Templates</p></div>
 </div>
       <div class="proj-txt rv">
         <span class="ghost">01</span>
@@ -498,7 +504,6 @@
         <p class="body">The Beauty Bothy wanted to step away from the usual beauty-salon look. The identity pairs <b>elegant typography</b> with <b>deep navy and warm champagne,</b> brought together by a delicate <b>dandelion-inspired</b> graphic that adds movement and lightness. Polished but never cold, with the softness running through everything from price lists to social.</p>
 
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#F5F4F3"></span><span class="dot" style="background:#ACA49A"></span><span class="dot" style="background:#4F4E56"></span><span class="dot" style="background:#363946"></span><span class="dot" style="background:#2C2324"></span></div>
-        <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
     </div>
   </div>
@@ -520,7 +525,6 @@
         <p class="body">A coastal identity built on <b>bold typography</b>, playful details and a calm ocean palette of <b>deep teal, aqua and soft neutrals</b> alongside imagery pulled from the sea. Adventurous but relaxed, made for the outdoors without losing its polish. Custom typographic details and supporting graphics give the identity <b>personality,</b> while keeping the overall look clean and contemporary.</p>
 
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#EEF0EE"></span><span class="dot" style="background:#9FC8E5"></span><span class="dot" style="background:#305261"></span><span class="dot" style="background:#A2A09B"></span><span class="dot" style="background:#615C56"></span></div>
-        <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
       <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
 <img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/tails-main.jpg" alt="Tails and Tides identity">
@@ -556,7 +560,6 @@
         <p class="body">For Nordkust Coffee we leaned into <b>coastal Nordic influences</b>, <b>strong type,</b> a restrained palette and graphic details that carry the feel across everything from bags to shop signage. The result is a coffee brand with a real <b>sense of place:</b> calm and confident, and easy to spot on a shelf.</p>
 
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#E8E3E0"></span><span class="dot" style="background:#D1A89E"></span><span class="dot" style="background:#A52020"></span><span class="dot" style="background:#5B5E63"></span><span class="dot" style="background:#A2A0A0"></span></div>
-        <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
     </div>
   </div>
@@ -578,7 +581,6 @@
         <p class="body">A full branding project covering identity design through to signage and product mockups. At the centre sits a <b>bold, condensed serif wordmark</b>, E SQUARED, with a <b>coffee-bean detail worked into the O,</b> a hand-drawn cup icon and an “EST. 2026” subline for a grounded, established feel despite being a new opening. A circular “COFFEE CORNER” ring wraps the mark, built to work on <b>round signage</b> as well as cup stickers and packaging.</p>
 
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#F8F8F8"></span><span class="dot" style="background:#9B9B9B"></span><span class="dot" style="background:#505051"></span><span class="dot" style="background:#3E3E40"></span><span class="dot" style="background:#27272A"></span></div>
-        <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
       <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
 <img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/esquaredbrand.jpg" alt="ESquared Coffee identity">
@@ -614,7 +616,6 @@
         <p class="body">Sara came to Nine3Designs after a run of disappointing experiences with previous designers. Her website was a basic Canva build that no longer reflected the professionalism of her role, and she had no way to access or manage her own domain. We began with the foundations: her <b>logo rebuilt as a clean, scalable version,</b> a considered colour palette in place of the muted greys, and social graphics for a consistent look. Then the biggest step, a <b>complete website rebuild, fully under her control</b> and consistent with her wider branding.</p>
 
         <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#E9EAEB"></span><span class="dot" style="background:#9E9890"></span><span class="dot" style="background:#92887C"></span><span class="dot" style="background:#625E5A"></span><span class="dot" style="background:#151B25"></span></div>
-        <a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
       </div>
     </div>
   </div>
@@ -636,7 +637,6 @@
 <p class="body">Coco Cafe is a <b>coastal coffee brand</b> built around a laid-back, everyday feel — <b>coffee for everyday.</b> A hand-drawn <b>palm and coconut mark</b> sits inside a soft arch, pairing relaxed line work with <b>warm sand and cream tones.</b> The identity flexes easily across <b>cups, tote bags and social,</b> staying friendly and unfussy at every size. The result feels like a little piece of the beach in every cup — <b>warm, easy-going</b> and instantly recognisable.</p>
 
 <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#C9995F"></span><span class="dot" style="background:#F1E6D2"></span><span class="dot" style="background:#4A3527"></span><span class="dot" style="background:#B0472F"></span></div>
-<a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
 </div>
 <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
 <img class="on" src="https://natalie-smith.co.uk/cococafe-main.jpg" alt="Coco Cafe brand identity">
@@ -665,7 +665,6 @@
 <p class="body">Duachy Apartments needed an identity that felt <b>premium</b> from the very first glance. A <b>deep green monogram</b> — an eagle formed from interlocking letterforms — sets a <b>confident, boutique tone,</b> carried through a full <b>guest experience:</b> guest guides, luggage tags, amenity bottles and coasters. <b>Gold detailing</b> against the rich green keeps everything feeling considered and high-end — apartment stays that feel closer to a <b>boutique hotel</b> than a rental.</p>
 
 <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#2A5240"></span><span class="dot" style="background:#B7965A"></span><span class="dot" style="background:#EDEDE6"></span><span class="dot" style="background:#C8CCC8"></span></div>
-<a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
 </div>
 <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
 <img class="on" src="https://natalie-smith.co.uk/duachy-main.jpg" alt="Duachy Apartments logo design">
@@ -691,7 +690,6 @@
 <p class="body">Lopwiel is an outdoor brand built around the descent — <b>start the descent</b> and keep going. The mark pairs a <b>mountain peak</b> with a flowing downhill line in a single icon that works just as hard at <b>app-icon size</b> as it does embossed on a <b>bottle</b> or set against landscape photography. A fresh palette of <b>deep green, mist and porcelain</b> keeps the brand airy and modern. Clean, versatile and quietly confident — ready to grow across <b>app, merchandise</b> and the mountains themselves.</p>
 
 <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#2E4632"></span><span class="dot" style="background:#DCE9E5"></span><span class="dot" style="background:#101418"></span><span class="dot" style="background:#9BC8C4"></span></div>
-<a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
 </div>
 <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
 <img class="on" src="https://natalie-smith.co.uk/lopwiel-main.jpg" alt="Lopwiel brand identity suite">
@@ -718,7 +716,6 @@
 <p class="body">Tevuna Law is a legal brand built on <b>straight answers</b> and <b>clear pricing.</b> The mark draws on classical architecture — a stylised <b>column portico</b> — giving the identity instant <b>authority</b> and a sense of establishment, while clean geometric line work keeps it <b>modern</b> rather than traditional. Deep navy sets a <b>serious, trustworthy tone,</b> lifted by a strong blue that feels sharp and approachable. Paired with bold, spaced capitals and the positioning line <b>'Real attorneys | Strategic answers | Flat fees',</b> the result is a logo that feels solid, direct and built on trust.</p>
 
 <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#1C2B3A"></span><span class="dot" style="background:#4E93C9"></span><span class="dot" style="background:#BFD9E8"></span><span class="dot" style="background:#FFFFFF"></span></div>
-<a class="behance" href="https://www.behance.net/nine3designs" target="_blank" rel="noopener">View on Behance ↗</a>
 </div>
 <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
 <img class="on" src="https://natalie-smith.co.uk/tevuna-main.jpg" alt="Tevuna Law logo design">
@@ -810,10 +807,9 @@
       <div class="contact-rows rv">
         <a href="mailto:natalie@nine3designs.co.uk"><span>natalie@nine3designs.co.uk</span><span class="lbl">Email ↗</span></a>
         <a href="https://nine3designs.co.uk" target="_blank" rel="noopener"><span>nine3designs.co.uk</span><span class="lbl">Website ↗</span></a>
-        <a href="https://www.behance.net/nine3designs" target="_blank" rel="noopener"><span>behance.net/nine3designs</span><span class="lbl">Behance ↗</span></a>
-        <a href="https://www.99designs.com/profiles/nine3designs" target="_blank" rel="noopener"><span>99designs.com/profiles/nine3designs</span><span class="lbl">99 by Vista approved ↗</span></a>
-        <a href="https://dribbble.com/nine3designs" target="_blank" rel="noopener"><span>dribbble.com/nine3designs</span><span class="lbl">Dribbble ↗</span></a>
         <a href="https://www.google.com/search?q=google+nine+3+designs" target="_blank" rel="noopener"><span>Google Reviews</span><span class="lbl">Rated 5★ · Read ↗</span></a>
+        <a href="https://wa.me/447343070273?text=Hi%20Nine3!%20I%27d%20like%20to%20chat%20about%20a%20design%20project." target="_blank" rel="noopener"><span>WhatsApp</span><span class="lbl">Chat ↗</span></a>
+        <a href="https://calendar.google.com/calendar/u/0/r/eventedit?vcon=meet&amp;dates=20261012T170000&amp;hl=en&amp;add=natalie@nine3designs.co.uk&amp;text=Free%20discovery%20call%20with%20Nine3%20Designs&amp;details=Free%2015-minute%20video%20call%20to%20discuss%20your%20project.%20Booked%20via%20nine3designs.co.uk" target="_blank" rel="noopener"><span>Book a free discovery call</span><span class="lbl">Book a call ↗</span></a>
       </div>
     </div>
   </div>
