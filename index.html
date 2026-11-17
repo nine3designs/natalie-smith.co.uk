@@ -58,8 +58,16 @@
   .hero h1 .ital{transition:color .5s ease}
   .hero h1 .ital:hover{color:var(--porcelain)}
   .hero .ball{position:absolute;right:clamp(40px,12vw,220px);top:clamp(120px,22vh,260px);width:clamp(180px,24vw,360px);
-    height:clamp(180px,24vw,360px);border-radius:50%;z-index:0;
-    background:radial-gradient(circle at 30% 30%,var(--teal-soft),var(--teal) 65%,var(--petrol-deep));opacity:.9}
+    height:clamp(180px,24vw,360px);z-index:0;cursor:pointer;
+    transform:translate(calc(var(--mx,0)*1px),calc(var(--my,0)*1px));transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .ball::before{content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%,var(--teal-soft),var(--teal) 65%,var(--petrol-deep));opacity:.9;
+    transition:opacity .5s ease;animation:blob 9s ease-in-out infinite}
+  .ball:hover::before{opacity:.12;animation-play-state:paused}
+  .ball .ball-logo{position:absolute;inset:0;margin:auto;width:74%;height:auto;opacity:0;
+    transform:scale(.5) rotate(-10deg);transition:all .55s cubic-bezier(.2,.7,.2,1)}
+  .ball:hover .ball-logo{opacity:1;transform:scale(1) rotate(0deg)}
+  @keyframes blob{0%,100%{border-radius:50% 50% 46% 54%/52% 48% 52% 48%}33%{border-radius:58% 42% 55% 45%/47% 60% 40% 53%}66%{border-radius:44% 56% 47% 53%/56% 44% 57% 43%}}
   .hero-rule{border:0;border-top:1px solid rgba(245,241,232,.25);margin:clamp(36px,6vh,64px) 0 0}
   .hero-meta{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,4vw,60px);padding:22px 0 clamp(24px,4vh,40px);align-items:start}
   .meta-cols{display:flex;gap:clamp(28px,5vw,90px);flex-wrap:wrap}
@@ -69,7 +77,7 @@
   .dot{width:8px;height:8px;border-radius:50%;background:var(--teal-soft);flex:none}
   .status .dot{animation:pulse 2.4s ease-in-out infinite}
   @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(127,181,176,.55)}55%{box-shadow:0 0 0 7px rgba(127,181,176,0)}}
-  .hero-intro{max-width:46ch;font-size:15px;line-height:1.75;opacity:.9}
+  .hero-intro{max-width:44ch;font-size:clamp(17px,1.75vw,22px);line-height:1.8;opacity:.95}
 
   /* ---------- section scaffold ---------- */
   section{padding:clamp(70px,11vh,130px) clamp(20px,4vw,56px)}
@@ -81,14 +89,14 @@
 
   /* ---------- work ---------- */
   #work{background:var(--porcelain);color:var(--graphite)}
-  .work-head{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
-  .work-head p{max-width:44ch;font-size:15px;line-height:1.75;opacity:.8}
+  .work-head{display:block}
+  .work-intro{max-width:52ch;font-size:clamp(16px,1.6vw,20px);line-height:1.8;opacity:.85;margin-top:24px}
   .filters{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 34px}
   .pill{border:1px solid rgba(39,43,43,.3);border-radius:999px;background:none;padding:10px 20px;font-family:var(--sans);
     font-size:12.5px;font-weight:600;letter-spacing:.08em;cursor:pointer;transition:.25s;color:var(--graphite)}
   .pill:hover{border-color:var(--graphite);transform:translateY(-2px);box-shadow:0 6px 14px rgba(39,43,43,.14)}
   .pill.on{background:var(--graphite);color:var(--porcelain);border-color:var(--graphite)}
-  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,36px)}
+  .work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(22px,3.2vw,42px);max-width:min(1380px,86.5%);margin:0 auto}
   .work-card{position:relative;border-radius:22px;overflow:hidden;background:var(--mist)}
   .work-card img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
   .work-card:hover img{transform:scale(1.045)}
@@ -102,6 +110,10 @@
   .work-card .num{transition:transform .35s ease,opacity .35s ease}
   .work-card:hover .num{transform:translateY(-4px);opacity:1}
   .work-card.hide{display:none}
+  .work-card img{transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+  .work-card:hover img{filter:saturate(1.08) brightness(1.03)}
+  .work-card .t::after{content:" ↗";opacity:0;display:inline-block;transform:translateX(-6px);transition:.3s ease}
+  .work-card:hover .t::after{opacity:.9;transform:none}
   .work-wide{grid-column:1/-1}
   .work-wide img{aspect-ratio:21/9}
 
@@ -113,7 +125,7 @@
   .portrait{position:relative;max-width:420px;margin-left:auto}
   .portrait img{border-radius:50%;border:6px solid var(--teal);aspect-ratio:1/1;object-fit:cover}
   .portrait .tag{position:absolute;bottom:8px;left:-14px;background:var(--teal);color:var(--cream);border-radius:999px;
-    padding:10px 18px;font-size:12px;font-weight:600;letter-spacing:.06em;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+    padding:14px 24px;font-size:clamp(14px,1.3vw,17px);font-weight:600;letter-spacing:.05em;box-shadow:0 10px 26px rgba(0,0,0,.3);white-space:nowrap;transition:transform .3s ease,background .3s ease}
   .stat-row{display:flex;gap:clamp(24px,4vw,70px);flex-wrap:wrap;margin-top:clamp(30px,5vh,54px)}
   .stat-row div span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:6px}
   .stat-row div b{font-family:var(--serif);font-style:normal;font-weight:400;font-size:15px}
@@ -135,7 +147,10 @@
 
   /* ---------- words ---------- */
   #words{background:var(--petrol)}
-  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,30px);margin-top:8px}
+  .q-wrap{position:relative;margin-top:8px}
+  .quotes{display:flex;gap:clamp(18px,2.5vw,30px);overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:10px;scrollbar-width:none;-ms-overflow-style:none}
+  .quotes::-webkit-scrollbar{display:none}
+  .quote{flex:0 0 min(420px,82vw);scroll-snap-align:start}
   .quote{border:1px solid rgba(245,241,232,.18);border-radius:20px;padding:28px 26px;background:rgba(245,241,232,.04)}
   .quote{transition:transform .3s ease,border-color .3s ease}
   .quote:hover{transform:translateY(-5px);border-color:rgba(245,241,232,.4)}
@@ -149,6 +164,11 @@
   .g-link:hover{border-color:var(--teal-soft);color:var(--teal-soft)}
   .g-link{transition:.25s}
   .g-link:hover{transform:translateY(-2px)}
+  .q-nav{display:flex;gap:12px;margin-top:24px}
+  .q-btn{width:46px;height:46px;border-radius:50%;border:1px solid rgba(245,241,232,.35);background:none;color:var(--cream);font-size:19px;cursor:pointer;transition:.25s;display:inline-flex;align-items:center;justify-content:center}
+  .q-btn:hover{background:var(--cream);color:var(--petrol);transform:translateY(-2px)}
+  .quote.fact .qm{display:none}
+  .quote.fact p{font-family:var(--disp);font-size:clamp(22px,2.4vw,32px);line-height:1.3;opacity:1;color:var(--teal-soft)}
 
   /* ---------- contact ---------- */
   #contact{background:var(--porcelain);color:var(--graphite)}
@@ -209,7 +229,7 @@
     .hero-meta{grid-template-columns:1fr}
     .work-grid{grid-template-columns:1fr}
     .work-wide img{aspect-ratio:4/3}
-    .work-head{grid-template-columns:1fr}
+    .quotes{padding:0 4px}
     .studio-grid{grid-template-columns:1fr}
     .portrait{margin:0 auto}
     .quotes{grid-template-columns:1fr}
@@ -243,19 +263,17 @@
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero" id="top">
-  <div class="ball"></div>
+  <div class="ball" id="ball"><img class="ball-logo" src="logo-badge.png" alt="Nine3 Designs N3 mark"></div>
   <h1 class="rv">Brands<br>designed<span class="ital">to be remembered.</span></h1>
+  <p class="hero-intro rv" style="margin-top:clamp(22px,3.5vh,40px)">The independent design portfolio of <b style="color:var(--teal-soft)">Natalie Smith</b>, branding, websites and print with real personality, built for businesses that care how they're seen and remembered.</p>
   <hr class="hero-rule">
   <div class="hero-meta">
-    <div>
-      <div class="meta-cols rv">
-        <div><span>Based</span><b>Sheffield, South Yorkshire</b></div>
-        <div><span>Focus</span><b>Branding · Web · Print</b></div>
-        <div><span>Clients</span><b>Independent UK businesses</b></div>
-      </div>
-      <div class="status rv" style="margin-top:22px"><span class="dot"></span>Taking on new projects now</div>
+    <div class="meta-cols rv">
+      <div><span>Based</span><b>Sheffield, South Yorkshire</b></div>
+      <div><span>Focus</span><b>Branding · Web · Print</b></div>
+      <div><span>Clients</span><b>From start-ups to established brands</b></div>
     </div>
-    <p class="hero-intro rv">The independent design portfolio of <b style="color:var(--teal-soft)">Natalie Smith</b>, branding, websites and print with real personality, built for businesses that care how they're seen and remembered.</p>
+    <div class="status rv" style="margin-top:22px"><span class="dot"></span>Taking on new projects now</div>
   </div>
 </section>
 
@@ -265,8 +283,8 @@
     <div>
       <p class="kicker">Selected work</p>
       <h2 class="giant rv">Selected<br><span class="ital">work.</span></h2>
+      <p class="work-intro rv">Branding, packaging and websites for cafés, apartments, law firms and everything in between. Nine projects, start to finish.</p>
     </div>
-    <p class="rv">Branding, packaging and websites for cafés, apartments, law firms and everything in between. Nine projects, start to finish.</p>
   </div>
   <div class="filters rv">
     <button class="pill on" data-f="all">All</button>
@@ -328,10 +346,15 @@
 <section id="words">
   <p class="kicker">Kind words</p>
   <h2 class="giant rv">Real reviews,<br><span class="ital">real projects.</span></h2>
-  <div class="quotes rv">
+  <div class="q-wrap rv">
+  <div class="quotes" id="qtrack">
     <div class="quote"><div class="qm">“</div><p>Nat recently did some digital designs for our business and I couldn't be happier with the final outcome! Nat is super responsive and nothing is ever too much trouble. We'll definitely be working with Nat again on other projects!</p><cite><b>OSG Home Solutions</b><span>Digital design project</span></cite></div>
     <div class="quote"><div class="qm">“</div><p>I had Natalie create some designs for me. The whole time it was made clear I could have whatever I needed, even when I was happy with the final touches, she took it to the next level. Thanks for being so patient!</p><cite><b>DFM Housing</b><span>Design project</span></cite></div>
     <div class="quote"><div class="qm">“</div><p>I asked. Nat delivered. And I am OBSESSED! These appointment cards are everything I wanted and more, perfection!</p><cite><b>Paige Oldham Hair Design</b><span>Print design project</span></cite></div>
+    <div class="quote fact"><p>★ 5.0<br>Google rating</p><cite><b>Every project reviewed</b><span>Real clients, real Google reviews</span></cite></div>
+    <div class="quote fact"><p>100%<br>custom designs</p><cite><b>Nothing off the shelf</b><span>UK based · fast turnaround</span></cite></div>
+  </div>
+  <div class="q-nav"><button class="q-btn" id="qprev" aria-label="Previous reviews">←</button><button class="q-btn" id="qnext" aria-label="Next reviews">→</button></div>
   </div>
   <a class="g-link" href="https://www.google.com/search?q=nine+3+designs+reviews" target="_blank" rel="noopener">Read our 5★ Google reviews ↗</a>
 </section>
@@ -410,6 +433,26 @@
     if(e.isIntersecting){navLinks.forEach(function(a){a.classList.toggle('active',a.dataset.sec===e.target.id)})}
   })},{threshold:.4});
   secs.forEach(function(id){var s=document.getElementById(id);if(s)so.observe(s)});
+
+  // hero ball: mouse parallax
+  var hero=document.querySelector('.hero'),ball=document.getElementById('ball');
+  if(hero&&ball&&!reduced){
+    hero.addEventListener('mousemove',function(e){
+      var r=hero.getBoundingClientRect();
+      var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      ball.style.setProperty('--mx',(x*38).toFixed(1));
+      ball.style.setProperty('--my',(y*30).toFixed(1));
+    });
+    hero.addEventListener('mouseleave',function(){ball.style.setProperty('--mx',0);ball.style.setProperty('--my',0)});
+  }
+
+  // reviews scroller
+  var qt=document.getElementById('qtrack');
+  if(qt){
+    var step=function(){var c=qt.querySelector('.quote');return c?c.getBoundingClientRect().width+24:360};
+    document.getElementById('qnext').onclick=function(){qt.scrollBy({left:step(),behavior:'smooth'})};
+    document.getElementById('qprev').onclick=function(){qt.scrollBy({left:-step(),behavior:'smooth'})};
+  }
 })();
 </script>
 </body>
