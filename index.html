@@ -59,11 +59,16 @@
   .hero h1 .ital:hover{color:var(--porcelain)}
   .hero .ball{position:absolute;right:clamp(40px,12vw,220px);top:clamp(120px,22vh,260px);width:clamp(180px,24vw,360px);
     height:clamp(180px,24vw,360px);z-index:0;cursor:pointer;
-    transform:translate(calc(var(--mx,0)*1px),calc(var(--my,0)*1px));transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+    transform:translate(calc(var(--mx,0)*1px),calc(var(--my,0)*1px));transition:transform .35s cubic-bezier(.2,.7,.2,1);
+    animation:float 7s ease-in-out infinite}
   .ball::before{content:"";position:absolute;inset:0;border-radius:50%;
-    background:radial-gradient(circle at 30% 30%,var(--teal-soft),var(--teal) 65%,var(--petrol-deep));opacity:.9;
+    background:radial-gradient(circle at var(--hx,30%) var(--hy,30%),var(--b1,var(--teal-soft)),var(--b2,var(--teal)) 65%,var(--b3,var(--petrol-deep)));opacity:.9;
     transition:opacity .5s ease;animation:blob 9s ease-in-out infinite}
   .ball:hover::before{opacity:.12;animation-play-state:paused}
+  .ball:hover{scale:1.06}
+  .ball.pop{animation:float 7s ease-in-out infinite,pop .5s cubic-bezier(.3,1.6,.4,1)}
+  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -14px}}
+  @keyframes pop{0%{scale:1.06}45%{scale:.88}75%{scale:1.1}100%{scale:1.06}}
   .ball .ball-logo{position:absolute;inset:0;margin:auto;width:74%;height:auto;opacity:0;
     transform:scale(.5) rotate(-10deg);transition:all .55s cubic-bezier(.2,.7,.2,1)}
   .ball:hover .ball-logo{opacity:1;transform:scale(1) rotate(0deg)}
@@ -98,7 +103,7 @@
   .pill.on{background:var(--graphite);color:var(--porcelain);border-color:var(--graphite)}
   .work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(22px,3.2vw,42px);max-width:min(1380px,86.5%);margin:0 auto}
   .work-card{position:relative;border-radius:22px;overflow:hidden;background:var(--mist)}
-  .work-card img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .work-card img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .3s cubic-bezier(.2,.7,.2,1)}
   .work-card:hover img{transform:scale(1.045)}
   .work-card .info{position:absolute;inset:auto 0 0 0;padding:18px 22px;display:flex;justify-content:space-between;align-items:end;gap:14px;
     background:linear-gradient(transparent,rgba(18,59,64,.72) 55%);color:var(--cream)}
@@ -110,7 +115,7 @@
   .work-card .num{transition:transform .35s ease,opacity .35s ease}
   .work-card:hover .num{transform:translateY(-4px);opacity:1}
   .work-card.hide{display:none}
-  .work-card img{transition:transform .6s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+  .work-card img{transition:transform .3s cubic-bezier(.2,.7,.2,1),filter .3s ease}
   .work-card:hover img{filter:saturate(1.08) brightness(1.03)}
   .work-card .t::after{content:" ↗";opacity:0;display:inline-block;transform:translateX(-6px);transition:.3s ease}
   .work-card:hover .t::after{opacity:.9;transform:none}
@@ -436,14 +441,26 @@
 
   // hero ball: mouse parallax
   var hero=document.querySelector('.hero'),ball=document.getElementById('ball');
+  var ballPals=[['var(--teal-soft)','var(--teal)','var(--petrol-deep)'],['#DCE9E5','#7FB5B0','#2A6A70'],['#F5F1E8','#DCE9E5','#2A6A70'],['#7FB5B0','#272B2B','#123B40']],ballPi=0;
   if(hero&&ball&&!reduced){
     hero.addEventListener('mousemove',function(e){
       var r=hero.getBoundingClientRect();
       var x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
       ball.style.setProperty('--mx',(x*38).toFixed(1));
       ball.style.setProperty('--my',(y*30).toFixed(1));
+      var br=ball.getBoundingClientRect();
+      var hx=Math.max(0,Math.min(100,(e.clientX-br.left)/br.width*100));
+      var hy=Math.max(0,Math.min(100,(e.clientY-br.top)/br.height*100));
+      ball.style.setProperty('--hx',(30+hx*.4).toFixed(1)+'%');
+      ball.style.setProperty('--hy',(30+hy*.4).toFixed(1)+'%');
     });
     hero.addEventListener('mouseleave',function(){ball.style.setProperty('--mx',0);ball.style.setProperty('--my',0)});
+    ball.addEventListener('click',function(){
+      ballPi=(ballPi+1)%ballPals.length;
+      var p=ballPals[ballPi];
+      ball.style.setProperty('--b1',p[0]);ball.style.setProperty('--b2',p[1]);ball.style.setProperty('--b3',p[2]);
+      ball.classList.remove('pop');void ball.offsetWidth;ball.classList.add('pop');
+    });
   }
 
   // reviews scroller
