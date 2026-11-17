@@ -4,871 +4,357 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Natalie Smith — Design Portfolio</title>
-<meta name="description" content="The portfolio of Natalie Smith — websites, branding and print design made in South Yorkshire.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=outfit@500,600,700&f[]=new-title@500&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="The portfolio of Natalie Smith — branding, websites and print design made in South Yorkshire.">
+<link rel="icon" type="image/png" href="logo-badge.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FCFCFB;
-    --paper-soft:#F4F2EE;
-    --ink:#1E2323;
-    --ink-grey:#8A8F8F;
-    --petrol:#174B50;
-    --petrol-deep:#0E3438;
-    --mist:#DCE9E5;
-    --hair:#E4E2DC;
-    --hair-strong:#C9C7C1;
-    --serif:"New Title", Georgia, serif;
-    --sans:"General Sans", -apple-system, sans-serif;
-    --disp:"Outfit", -apple-system, sans-serif;
+    --petrol:#174B50; --petrol-deep:#123B40; --teal:#2A6A70; --teal-soft:#7FB5B0;
+    --porcelain:#F5F1E8; --mist:#DCE9E5; --graphite:#272B2B; --cream:#F5F1E8;
+    --sans:'Inter',system-ui,sans-serif; --disp:'Anton',sans-serif; --serif:'Fraunces',serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-snap-type:y mandatory}
-  body{background:var(--paper-soft);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
-  img{display:block;max-width:100%;height:auto}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);background:var(--petrol);color:var(--cream);-webkit-font-smoothing:antialiased}
+  img{display:block;max-width:100%}
   a{color:inherit}
-  ::selection{background:var(--petrol);color:#fff}
 
-  /* ---------- slide chrome ---------- */
-  .slide{
-    position:relative;
-    min-height:100vh;
-    scroll-snap-align:start;scroll-snap-stop:always;
-    padding:clamp(48px,7vh,84px) clamp(24px,5vw,88px);
-    display:flex;flex-direction:column;
-    background:var(--paper);
-    border-bottom:1px solid var(--hair);
-  }
-  .slide-inner{max-width:1240px;width:100%;margin:auto 0;flex:1;display:flex;flex-direction:column;justify-content:center}
-  .chrome{
-    position:absolute;top:0;left:0;right:0;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:20px clamp(24px,5vw,88px);
-    font-family:var(--disp);font-weight:500;font-size:10.5px;letter-spacing:.08em;color:var(--ink-grey);
-  }
-  .chrome .tag{
-    background:var(--petrol);color:#fff;
-    padding:7px 18px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;
-  }
-  .pagenum{
-    position:absolute;bottom:18px;left:clamp(24px,5vw,88px);
-    font-family:var(--disp);font-weight:500;font-size:10.5px;color:var(--ink-grey);letter-spacing:.08em;
-  }
-  .dark{background:var(--petrol-deep);color:#F5F1E8}
-  .dark .chrome{color:rgba(245,241,232,.55)}
-  .dark .chrome .tag{background:#F5F1E8;color:var(--petrol-deep)}
-  .dark .pagenum{color:rgba(245,241,232,.55)}
-  .dark ::selection{background:#F5F1E8;color:var(--petrol-deep)}
+  /* ---------- header ---------- */
+  header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;
+    padding:18px clamp(20px,4vw,56px);transition:background .35s ease,box-shadow .35s ease}
+  header.solid{background:rgba(18,59,64,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(245,241,232,.12)}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .brand img{height:38px;width:38px}
+  .brand b{font-family:var(--disp);font-weight:400;font-size:17px;letter-spacing:.06em;color:var(--cream)}
+  nav{display:flex;align-items:center;gap:clamp(16px,2.4vw,34px)}
+  nav a{font-size:14.5px;font-weight:500;text-decoration:none;opacity:.88;position:relative;padding-bottom:4px}
+  nav a:hover{opacity:1}
+  nav a.active{opacity:1}
+  nav a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--teal-soft)}
+  .links{display:contents}
+  nav .cta{border:1px solid rgba(245,241,232,.35);border-radius:999px;padding:8px 16px;transition:.25s}
+  nav .cta:hover{background:var(--cream);color:var(--petrol);opacity:1}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
+  .burger span{display:block;width:24px;height:2px;background:var(--cream);margin:5px 0;transition:.3s}
+  .mobile-nav{position:fixed;inset:0;background:var(--petrol-deep);z-index:40;display:flex;flex-direction:column;gap:8px;
+    padding:110px clamp(24px,8vw,60px);transform:translateY(-100%);transition:transform .45s cubic-bezier(.7,0,.3,1)}
+  .mobile-nav.open{transform:translateY(0)}
+  .mobile-nav a{font-family:var(--disp);font-size:clamp(34px,9vw,52px);text-decoration:none;padding:10px 0;border-bottom:1px solid rgba(245,241,232,.14)}
 
-  .label{font-family:var(--disp);font-weight:500;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-grey)}
-  .dark .label{color:rgba(245,241,232,.6)}
+  /* ---------- hero ---------- */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:130px clamp(20px,4vw,56px) 0;
+    background:radial-gradient(1100px 700px at 82% 30%,rgba(42,106,112,.55),transparent 60%),var(--petrol);position:relative;overflow:hidden}
+  .hero h1{font-family:var(--disp);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;
+    font-size:clamp(64px,11.5vw,196px);color:var(--cream);position:relative;z-index:1}
+  .hero h1 .ital{display:block;font-family:var(--serif);font-style:italic;font-weight:340;text-transform:none;
+    color:var(--teal-soft);letter-spacing:0;font-size:1.06em;line-height:1.05;padding-bottom:.12em}
+  .hero .ball{position:absolute;right:clamp(40px,12vw,220px);top:clamp(120px,22vh,260px);width:clamp(180px,24vw,360px);
+    height:clamp(180px,24vw,360px);border-radius:50%;z-index:0;
+    background:radial-gradient(circle at 30% 30%,var(--teal-soft),var(--teal) 65%,var(--petrol-deep));opacity:.9}
+  .hero-rule{border:0;border-top:1px solid rgba(245,241,232,.25);margin:clamp(36px,6vh,64px) 0 0}
+  .hero-meta{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,4vw,60px);padding:22px 0 clamp(24px,4vh,40px);align-items:start}
+  .meta-cols{display:flex;gap:clamp(28px,5vw,90px);flex-wrap:wrap}
+  .meta-cols div span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:6px}
+  .meta-cols div b{font-family:var(--serif);font-style:italic;font-weight:420;font-size:20px}
+  .status{display:flex;align-items:center;gap:10px;font-size:13.5px;opacity:.85}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--teal-soft);flex:none}
+  .hero-intro{max-width:46ch;font-size:15px;line-height:1.75;opacity:.9}
 
-  /* ---------- cover ---------- */
-  .cover-glow{
-    position:absolute;inset:0;overflow:hidden;pointer-events:none;
-  }
-  .cover-glow::before{
-    content:"";position:absolute;width:120vmax;height:120vmax;
-    left:-38vmax;top:-52vmax;border-radius:50%;
-    background:radial-gradient(circle at 50% 50%, rgba(126,214,208,.30) 0%, rgba(63,150,152,.16) 30%, rgba(23,75,80,0) 60%);
-    filter:blur(6px);
-  }
-  .cover-glow::after{
-    content:"";position:absolute;width:95vmax;height:95vmax;
-    right:-40vmax;bottom:-52vmax;border-radius:50%;
-    background:radial-gradient(circle at 50% 50%, rgba(200,169,106,.22) 0%, rgba(200,169,106,.08) 38%, transparent 62%);
-  }
-  .cover-title{
-    font-family:var(--disp);font-weight:600;letter-spacing:-.03em;line-height:1.02;
-    font-size:clamp(60px,11.5vw,168px);color:#F5F1E8;
-  }
-  .cover-title em{font-style:normal;color:#9BC8C4}
-  .cover-name{
-    font-family:var(--disp);font-weight:500;letter-spacing:-.01em;
-    font-size:clamp(22px,2.6vw,34px);color:rgba(245,241,232,.85);
-    margin-top:20px;
-  }
-  .cover-name-big{
-    font-family:var(--disp);font-weight:600;letter-spacing:-.03em;line-height:1.02;
-    font-size:clamp(60px,11.5vw,168px);color:#F5F1E8;
-  }
-  .cover-grid{
-    position:relative;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;
-    margin-top:clamp(40px,9vh,96px);
-  }
-  .cover-grid .block{font-size:12.5px;line-height:1.9;color:rgba(245,241,232,.72)}
-  .cover-grid .block b{display:block;color:#F5F1E8;font-weight:600;margin-bottom:4px}
-  .cover-grid a{text-decoration:none}
-  .cover-grid a:hover{color:#9BC8C4}
+  /* ---------- section scaffold ---------- */
+  section{padding:clamp(70px,11vh,130px) clamp(20px,4vw,56px)}
+  .kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.55;margin-bottom:18px}
+  .giant{font-family:var(--disp);font-weight:400;text-transform:uppercase;line-height:.92;font-size:clamp(52px,9.5vw,150px)}
+  .giant .ital{font-family:var(--serif);font-style:italic;font-weight:340;text-transform:none;color:var(--teal);letter-spacing:0;font-size:1.04em}
+  .rule{border:0;border-top:1px solid rgba(39,43,43,.25);margin:clamp(28px,5vh,48px) 0}
+  .rule.on-dark{border-color:rgba(245,241,232,.25)}
 
-  /* ---------- welcome ---------- */
-  .slide{overflow:hidden}
-  .swoosh{
-    position:absolute;right:-20vw;top:2vh;width:44vw;height:44vw;
-    border:1px solid rgba(23,75,80,.08);border-radius:50%;pointer-events:none;
-  }
-  .swoosh::before{
-    content:"";position:absolute;inset:9%;
-    border:1px solid rgba(23,75,80,.05);border-radius:50%;
-  }
-  .welcome-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(40px,7vw,110px);align-items:start}
-  .welcome-h{
-    font-family:var(--disp);font-weight:600;letter-spacing:-.025em;line-height:1.12;
-    font-size:clamp(34px,4.6vw,62px);
-  }
-  .welcome-h .hl{position:relative;z-index:0;white-space:nowrap}
-  .welcome-h .hl::after{
-    content:"";position:absolute;left:0;right:0;bottom:.06em;height:.34em;
-    background:linear-gradient(90deg, rgba(155,200,196,.55), rgba(220,233,229,.55));z-index:-1;
-  }
-  .intro-serif{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.4vw,44px);margin-bottom:18px}
-  .intro-body{font-size:15.5px;line-height:1.8;color:var(--ink-grey);max-width:46ch}
-  .intro-body b,.nat-body b,.body b,.close-note b,.svc p b{color:var(--petrol);font-weight:600}
-  .close-note b{color:var(--mist)}
-  .intro-facts{margin-top:34px;border-top:1px solid var(--hair)}
-  .intro-facts div{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--hair);font-size:12.5px}
-  .intro-facts span:last-child{color:var(--ink);font-weight:500}
+  /* ---------- work ---------- */
+  #work{background:var(--porcelain);color:var(--graphite)}
+  .work-head{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
+  .work-head p{max-width:44ch;font-size:15px;line-height:1.75;opacity:.8}
+  .filters{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 34px}
+  .pill{border:1px solid rgba(39,43,43,.3);border-radius:999px;background:none;padding:10px 20px;font-family:var(--sans);
+    font-size:12.5px;font-weight:600;letter-spacing:.08em;cursor:pointer;transition:.25s;color:var(--graphite)}
+  .pill:hover{border-color:var(--graphite)}
+  .pill.on{background:var(--graphite);color:var(--porcelain);border-color:var(--graphite)}
+  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,36px)}
+  .work-card{position:relative;border-radius:22px;overflow:hidden;background:var(--mist)}
+  .work-card img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .work-card:hover img{transform:scale(1.045)}
+  .work-card .info{position:absolute;inset:auto 0 0 0;padding:18px 22px;display:flex;justify-content:space-between;align-items:end;gap:14px;
+    background:linear-gradient(transparent,rgba(18,59,64,.72) 55%);color:var(--cream)}
+  .work-card .t{font-weight:600;font-size:16px}
+  .work-card .c{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-top:3px}
+  .work-card .num{font-family:var(--disp);font-size:15px;opacity:.8}
+  .work-card.hide{display:none}
+  .work-wide{grid-column:1/-1}
+  .work-wide img{aspect-ratio:21/9}
 
-  /* ---------- index grid ---------- */
-  .index-grid{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--hair)}
-  .index-cell{
-    padding:32px 22px 26px;border-right:1px solid var(--hair);text-decoration:none;
-    display:flex;flex-direction:column;min-height:360px;transition:background .25s;
-  }
-  .index-cell:last-child{border-right:none}
-  .index-cell:hover{background:var(--paper-soft)}
-  .index-cell .n{font-family:var(--disp);font-weight:500;font-size:27px;letter-spacing:.02em;margin-bottom:40px}
-  .index-cell .nm{font-family:var(--serif);font-weight:500;font-size:clamp(23px,2vw,30px);line-height:1.2;margin-bottom:8px}
-  .index-cell .ct{font-family:"Do Hyeon",var(--disp);font-weight:400;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-grey)}
-  .index-cell .th{margin-top:auto;padding-top:22px}
-  .index-cell .th img{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--paper-soft)}
-  .index-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px}
-  .index-head .label{font-family:"Do Hyeon",var(--disp);letter-spacing:.08em;font-size:13px}
-
-  /* ---------- project slides ---------- */
-  .proj{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(36px,6vw,96px);align-items:center}
-  .proj.flip{grid-template-columns:1.15fr 1fr}
-  .proj-txt{position:relative;z-index:1}
-  .ghost{position:absolute;right:-3vw;top:-6vh;font-family:var(--serif);font-weight:500;
-    font-size:clamp(180px,22vw,320px);line-height:1;color:rgba(23,75,80,.05);pointer-events:none;user-select:none}
-  .pal{display:flex;align-items:center;gap:9px;margin-top:20px}
-  .pal .lbl{font-family:var(--disp);font-weight:500;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-grey);margin-right:6px}
-  .pal .dot{width:20px;height:20px;border-radius:50%;border:1px solid rgba(30,35,35,.12)}
-  .proj-txt .pnum{font-family:var(--disp);font-weight:500;font-size:10.5px;color:var(--petrol);letter-spacing:.16em;margin-bottom:24px;display:inline-block;
-    border:1px solid rgba(23,75,80,.28);border-radius:999px;padding:7px 14px}
-  .proj-txt h3{font-family:var(--serif);font-weight:500;font-size:clamp(46px,6.2vw,92px);line-height:1.04;margin-bottom:22px;color:#2A6A70}
-  .proj-txt .stand{font-size:15px;line-height:1.65;color:var(--ink);font-weight:500;margin-bottom:18px;max-width:40ch}
-  .proj-txt .body{font-size:12.5px;line-height:1.95;color:var(--ink-grey);max-width:46ch}
-  .deliverables{margin-top:32px;background:rgba(220,233,229,.35);border-radius:14px;padding:18px 20px;border-left:2px solid var(--petrol)}
-  .deliverables p{font-size:12.5px;line-height:2;color:var(--ink-grey)}
-  .deliverables p b{font-family:var(--disp);font-weight:500;color:var(--ink);letter-spacing:.1em;text-transform:uppercase;font-size:10px;display:block;margin-bottom:4px}
-  .proj-img{position:relative}
-  .proj-img img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--paper-soft);box-shadow:0 1px 2px rgba(30,35,35,.05)}
-  .img-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
-  .img-grid.two{grid-template-columns:repeat(2,1fr)}
-  .img-grid img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;background:var(--paper-soft)}
-  .img-grid figure{display:flex}
-  .img-cap{font-family:var(--disp);font-weight:500;font-size:10px;color:var(--ink-grey);letter-spacing:.1em;text-transform:uppercase;margin-top:12px}
-  .fullbleed{margin:calc(clamp(48px,7vh,84px) * -1) calc(clamp(24px,5vw,88px) * -1) 0;height:62vh}
-  .fullbleed img{width:100%;height:100%;object-fit:cover}
-  .behance{
-    display:inline-block;margin-top:28px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;
-    text-decoration:none;color:var(--petrol);border-bottom:1px solid var(--petrol);padding-bottom:3px;font-weight:600;
-  }
-  .behance:hover{opacity:.7}
-  .dark .behance{color:#9BC8C4;border-color:#9BC8C4}
-
-  /* ---------- quotes ---------- */
-  .quotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,48px)}
-  .quote{border-top:1px solid var(--hair-strong);padding-top:22px}
-  .quote .qm{font-family:var(--serif);font-weight:500;font-size:44px;line-height:.6;color:var(--petrol)}
-  .quote p{font-size:15px;line-height:1.85;color:var(--ink-grey);margin:16px 0 20px}
-  .quote cite{font-family:var(--disp);font-style:normal;font-weight:500;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
-  .quote .role{display:block;font-weight:400;color:var(--ink-grey);letter-spacing:.08em;margin-top:3px}
+  /* ---------- studio ---------- */
+  #studio{background:var(--graphite)}
+  .studio-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,5vw,70px);align-items:start;margin-top:10px}
+  .studio-grid .story p{font-size:15px;line-height:1.85;opacity:.85;max-width:56ch;margin-bottom:18px}
+  .studio-grid .story b{color:var(--teal-soft);font-weight:600}
+  .portrait{position:relative;max-width:420px;margin-left:auto}
+  .portrait img{border-radius:50%;border:6px solid var(--teal);aspect-ratio:1/1;object-fit:cover}
+  .portrait .tag{position:absolute;bottom:8px;left:-14px;background:var(--teal);color:var(--cream);border-radius:999px;
+    padding:10px 18px;font-size:12px;font-weight:600;letter-spacing:.06em;box-shadow:0 10px 26px rgba(0,0,0,.3)}
+  .stat-row{display:flex;gap:clamp(24px,4vw,70px);flex-wrap:wrap;margin-top:clamp(30px,5vh,54px)}
+  .stat-row div span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:6px}
+  .stat-row div b{font-family:var(--serif);font-style:italic;font-weight:420;font-size:21px}
 
   /* ---------- services ---------- */
-  #services,#natalie{background:linear-gradient(155deg,#E3EEEA 0%,#F5F1E8 52%,#EFECE3 100%);position:relative;overflow:hidden}
-  #services::before,#natalie::before{content:'';position:absolute;width:52vw;height:52vw;right:-18vw;top:-24vw;border-radius:50%;
-    background:radial-gradient(circle,rgba(23,75,80,.14),rgba(23,75,80,0) 70%);pointer-events:none}
-  #services::after,#natalie::after{content:'';position:absolute;width:40vw;height:40vw;left:-16vw;bottom:-20vw;border-radius:50%;
-    background:radial-gradient(circle,rgba(23,75,80,.10),rgba(23,75,80,0) 70%);pointer-events:none}
-  #natalie{background:linear-gradient(155deg,#DCE9E5 0%,#E9F0EE 50%,#F5F3EC 100%)}
-  #natalie::before{background:radial-gradient(circle,rgba(23,75,80,.09),rgba(23,75,80,0) 70%)}
-  #natalie::after{background:radial-gradient(circle,rgba(23,75,80,.07),rgba(23,75,80,0) 70%)}
-  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative;z-index:1}
-  .svc{padding:28px 26px 32px;border-radius:18px;background:rgba(255,255,255,.42);
-    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-    border:1px solid rgba(255,255,255,.65);box-shadow:0 14px 36px rgba(23,75,80,.08);
-    transition:transform .25s ease,box-shadow .25s ease}
-  .svc:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(23,75,80,.13)}
-  .svc .n{font-family:var(--disp);font-weight:500;font-size:11px;color:var(--petrol);letter-spacing:.14em;display:block;margin-bottom:26px}
-  .svc h4{font-family:var(--serif);font-weight:500;font-size:30px;margin-bottom:10px}
-  .svc p{font-size:13.5px;line-height:1.8;color:var(--ink-grey)}
-  @keyframes dissolve{from{opacity:0;filter:blur(8px);transform:translateY(10px)}to{opacity:1;filter:blur(0);transform:none}}
-  .svc h4,.svc p{opacity:0}
-  .svc-grid.in .svc h4{animation:dissolve .8s ease .12s forwards}
-  .svc-grid.in .svc p{animation:dissolve .8s ease .32s forwards}
-  .big-title em{color:#2A6A70}
-  .big-title{font-family:var(--serif);font-weight:500;font-size:clamp(44px,5.6vw,80px);line-height:1;margin-bottom:clamp(28px,4vh,44px)}
-  .gr-link{display:inline-block;margin-top:34px;font-family:var(--disp);font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--petrol);text-decoration:none;border-bottom:1px solid var(--petrol);padding-bottom:3px}
+  #services{background:var(--porcelain);color:var(--graphite)}
+  .svc-list{margin-top:8px}
+  .svc-row{display:grid;grid-template-columns:80px 1.1fr 1.6fr auto;gap:clamp(16px,3vw,40px);align-items:center;
+    padding:clamp(20px,3.4vh,32px) 0;border-bottom:1px solid rgba(39,43,43,.2);transition:.3s}
+  .svc-row:first-child{border-top:1px solid rgba(39,43,43,.2)}
+  .svc-row:hover{background:rgba(42,106,112,.06);padding-left:12px}
+  .svc-row .n{font-family:var(--disp);font-size:15px;color:var(--teal)}
+  .svc-row h3{font-family:var(--disp);font-weight:400;text-transform:uppercase;font-size:clamp(20px,2.6vw,30px);letter-spacing:.02em}
+  .svc-row p{font-size:14px;line-height:1.65;opacity:.75}
+  .svc-row .arr{font-size:20px;color:var(--teal);transition:transform .3s}
+  .svc-row:hover .arr{transform:translateX(6px)}
 
-  /* ---------- closing ---------- */
-  .close-title{font-weight:700;letter-spacing:-.025em;line-height:1.05;font-size:clamp(40px,6.5vw,88px);color:#F5F1E8}
-  .close-title em{font-style:normal;color:#9BC8C4}
-  .close-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:end;margin-top:clamp(36px,7vh,72px)}
-  .contact-rows{border-top:1px solid rgba(245,241,232,.25)}
-  .contact-rows a{
-    display:flex;justify-content:space-between;align-items:baseline;gap:12px;
-    padding:15px 2px;border-bottom:1px solid rgba(245,241,232,.25);
-    text-decoration:none;font-size:14px;color:#F5F1E8;transition:padding-left .2s;
-  }
-  .contact-rows a:hover{padding-left:8px;color:#9BC8C4}
-  .contact-rows .lbl{font-family:var(--disp);font-weight:500;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,241,232,.55)}
-  .close-note{font-size:15.5px;line-height:2;color:rgba(245,241,232,.82);max-width:54ch;
-    background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:18px;
-    padding:38px 42px 40px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-  .close-note b{display:inline-block}
+  /* ---------- words ---------- */
+  #words{background:var(--petrol)}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,30px);margin-top:8px}
+  .quote{border:1px solid rgba(245,241,232,.18);border-radius:20px;padding:28px 26px;background:rgba(245,241,232,.04)}
+  .quote .qm{font-family:var(--serif);font-size:34px;color:var(--teal-soft);line-height:1;margin-bottom:12px}
+  .quote p{font-size:14px;line-height:1.8;opacity:.88}
+  .quote cite{display:block;margin-top:18px;font-style:normal}
+  .quote cite b{display:block;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase}
+  .quote cite span{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.55;margin-top:3px;display:block}
+  .g-link{display:inline-flex;align-items:center;gap:8px;margin-top:30px;font-size:13px;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;text-decoration:none;border-bottom:1px solid rgba(245,241,232,.4);padding-bottom:6px;transition:.25s}
+  .g-link:hover{border-color:var(--teal-soft);color:var(--teal-soft)}
 
-  /* ---------- I'm Natalie ---------- */
-  .nat-grid{display:grid;grid-template-columns:.85fr 1.3fr .85fr;gap:clamp(28px,4vw,64px);align-items:start}
-  .nat-photo img{width:100%;aspect-ratio:1/1;object-fit:cover;background:var(--paper-soft);border-radius:50%;border:5px solid var(--petrol)}
-  .nat-h{font-family:var(--serif);font-weight:500;font-size:clamp(48px,6.4vw,92px);line-height:1;margin-bottom:24px}
-  .nat-h em{font-style:normal;color:var(--petrol)}
-  .nat-body{font-size:13.5px;line-height:1.9;color:var(--ink-grey);max-width:50ch}
-  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(32px,6vh,56px);position:relative;z-index:1}
-  .how{padding:26px 24px 30px;border-radius:18px;background:rgba(255,255,255,.42);
-    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-    border:1px solid rgba(255,255,255,.65);box-shadow:0 14px 36px rgba(23,75,80,.08);
-    transition:transform .25s ease,box-shadow .25s ease}
-  .how:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(23,75,80,.13)}
-  .how .n{font-family:var(--disp);font-weight:600;font-size:13px;color:var(--petrol);letter-spacing:.2em;display:block;margin-bottom:12px}
-  .how h5{font-family:var(--serif);font-weight:500;font-size:clamp(20px,1.8vw,26px);margin-bottom:6px;color:var(--ink)}
-  .how p{font-size:12px;line-height:1.75;color:var(--ink-grey)}
-  .nat-facts{border-top:1px solid var(--hair-strong)}
-  .nat-facts div{display:flex;justify-content:space-between;gap:16px;padding:13px 2px;border-bottom:1px solid var(--hair);font-size:12.5px}
-  .nat-facts .k{font-family:var(--disp);font-weight:500;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-grey);white-space:nowrap;padding-top:2px}
-  .nat-facts .v{color:var(--ink);text-align:right;max-width:30ch;line-height:1.6;font-size:13px}
+  /* ---------- contact ---------- */
+  #contact{background:var(--porcelain);color:var(--graphite)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);margin-top:10px;align-items:start}
+  .contact-note{font-size:15.5px;line-height:1.85;opacity:.85;max-width:46ch}
+  .contact-note b{color:var(--teal);font-weight:600}
+  .rows a{display:flex;justify-content:space-between;align-items:center;gap:16px;text-decoration:none;
+    padding:20px 0;border-bottom:1px solid rgba(39,43,43,.22);font-size:15.5px;font-weight:500;transition:.25s}
+  .rows a:first-child{border-top:1px solid rgba(39,43,43,.22)}
+  .rows a:hover{padding-left:10px;color:var(--teal)}
+  .rows .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;font-weight:600}
+  .big-cta{display:inline-flex;align-items:center;gap:12px;margin-top:34px;background:var(--graphite);color:var(--porcelain);
+    text-decoration:none;border-radius:999px;padding:18px 32px;font-weight:600;font-size:15px;transition:.3s}
+  .big-cta:hover{background:var(--teal)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--petrol-deep);padding:clamp(50px,8vh,80px) clamp(20px,4vw,56px) 30px}
+  .foot-grid{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;margin-bottom:36px}
+  .foot-grid img{height:64px}
+  .foot-links{display:flex;gap:26px;flex-wrap:wrap}
+  .foot-links a{text-decoration:none;font-size:13.5px;opacity:.8}
+  .foot-links a:hover{opacity:1;color:var(--teal-soft)}
+  .foot-base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(245,241,232,.15);
+    padding-top:22px;font-size:12px;opacity:.55;letter-spacing:.04em}
 
   /* ---------- reveal ---------- */
-  .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
   .rv.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
-
-  /* ---------- deck nav ---------- */
-  .progress{position:fixed;top:0;left:0;height:2px;background:var(--petrol);width:0;z-index:100;transition:width .15s linear}
-  .deck-nav{position:fixed;bottom:16px;right:clamp(24px,5vw,88px);z-index:100;display:flex;align-items:center;gap:14px}
-  .deck-nav .count{font-family:var(--disp);font-weight:500;font-size:10.5px;letter-spacing:.14em;color:var(--ink-grey)}
-  .deck-btn{
-    width:40px;height:40px;border-radius:999px;border:1px solid var(--hair-strong);
-    background:var(--paper);color:var(--ink);font-size:15px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;transition:all .2s;
-  }
-  .deck-btn:hover{background:var(--petrol);border-color:var(--petrol);color:#fff}
-  .deck-btn:disabled{opacity:.3;cursor:default}
-  .deck-btn:disabled:hover{background:var(--paper);border-color:var(--hair-strong);color:var(--ink)}
-  .deck-hint{
-    position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:100;
-    font-family:var(--disp);font-weight:500;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-    color:var(--ink-grey);opacity:.8;transition:opacity .6s;pointer-events:none;
-  }
-  @media (max-width:980px){.deck-hint{display:none}}
-  @media print{.progress,.deck-nav,.deck-hint{display:none}.svc h4,.svc p{opacity:1 !important;animation:none !important}}
-  @media (prefers-reduced-motion:reduce){.svc h4,.svc p{opacity:1;animation:none}}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
   /* ---------- responsive ---------- */
-  @media (max-width:980px){
-    .nat-grid{grid-template-columns:1fr;gap:24px}
-    .nat-photo img{aspect-ratio:1/1;max-height:52vh;object-fit:cover}
-    .how-grid{grid-template-columns:1fr 1fr;gap:12px}
-    html{scroll-snap-type:y proximity}
-    .index-grid{grid-template-columns:repeat(2,1fr)}
-    .index-cell{min-height:0;border-bottom:1px solid var(--hair)}
-    .index-cell:nth-child(2n){border-right:none}
-    .proj,.proj.flip{grid-template-columns:1fr;gap:28px}
-    .welcome-grid{grid-template-columns:1fr;gap:28px}
-    .quotes-grid{grid-template-columns:1fr}
-    .svc-grid{grid-template-columns:1fr 1fr}
-    .close-grid{grid-template-columns:1fr}
-    .fullbleed{height:42vh}
-    .slide{min-height:auto;padding-top:96px}
-  }
-
-  /* ---------- print / PDF ---------- */
-  @media print{
-    @page{size:A4 landscape;margin:0}
-    body{background:#fff}
-    .slide{min-height:0;height:210mm;padding:14mm 16mm;page-break-after:always;border:none;overflow:hidden}
-    .chrome{padding:0 0 8mm;position:absolute;top:10mm}
-    .pagenum{bottom:8mm}
-    .slide-inner{max-width:none;flex:1}
-    .rv{opacity:1 !important;transform:none !important}
-    .fullbleed{margin:0;height:120mm}
-    .behance{display:none}
-  }
-
-  /* ---------- project layout (mock v2) ---------- */
-  .proj,.proj.flip{grid-template-columns:.94fr 1.06fr;gap:clamp(40px,6vw,90px);align-items:center}
-  .carousel{position:relative;height:min(52vh,500px);display:flex;align-items:center;justify-content:center}
-  .carousel img{position:absolute;width:auto;height:auto;max-width:92%;max-height:100%;aspect-ratio:auto;background:none;object-fit:contain;opacity:0;z-index:1;
-    box-shadow:0 24px 50px -22px rgba(23,75,80,.35),0 2px 8px rgba(30,35,35,.06);
-    transition:opacity .8s ease;user-select:none;-webkit-user-drag:none}
-  .carousel img.on{opacity:1}
-  .carousel .c-dots{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5}
-  .carousel .c-dots i{width:7px;height:7px;border-radius:50%;background:rgba(23,75,80,.20);cursor:pointer;transition:background .3s,transform .3s}
-  .carousel .c-dots i.on{background:var(--petrol);transform:scale(1.2)}
-  .proj-img .deliverables{margin-top:48px;background:rgba(255,255,255,.65);border:1px solid var(--hair-strong);border-radius:12px;padding:16px 22px;border-left:none}
-  .proj-img .deliverables p b{font-family:var(--serif);font-weight:500;font-size:40px;color:var(--petrol);letter-spacing:0;text-transform:none;margin-bottom:10px}
-  .pal{border-bottom:1px solid var(--hair-strong);padding-bottom:18px;margin-top:30px}
-  .proj-txt .stand{font-size:17px}
-  .proj-txt .body{font-size:13.5px;line-height:1.9}
-  @media (max-width:980px){
-    .carousel{height:min(46vh,400px)}
-    .carousel img{max-width:96%}
-    .carousel .c-dots{bottom:-26px}
-    .proj-img .deliverables{margin-top:44px}
-  }
-  @media (prefers-reduced-motion:reduce){.carousel img{transition:none !important}}
-  @media print{.carousel img:not(.on){display:none}.carousel{height:auto}.carousel::before{display:none}.carousel .c-dots{display:none}.carousel img.on{position:relative;max-width:100%}}
-
-  /* ---------- mobile rework ---------- */
-  @media (max-width:740px){
-    .slide{min-height:auto;padding:88px 22px 110px}
-    .slide#top,.slide#contact{min-height:100vh}
-    .chrome{padding:16px 22px;font-size:9.5px}
-    .pagenum{display:none}
-
-    /* deck nav */
-    .deck-nav{bottom:14px;right:14px;gap:10px}
-    .deck-btn{width:42px;height:42px;box-shadow:0 2px 10px rgba(30,35,35,.10)}
-    .deck-nav .count{display:none}
-
-    /* contents */
-    .index-head{margin-bottom:18px}
-    .index-head .label{font-size:11px}
-    .index-grid{grid-template-columns:1fr}
-    .index-cell{min-height:0;padding:24px 20px 20px;border-right:none}
-    .index-cell .n{font-size:22px;margin-bottom:12px}
-    .index-cell .nm{font-size:24px;margin-bottom:6px}
-    .index-cell .ct{font-size:10.5px}
-    .index-cell .th{padding-top:18px}
-    .index-cell .th img{aspect-ratio:16/10}
-
-    /* project slides — stack */
-    .proj,.proj.flip{grid-template-columns:1fr;gap:30px;align-items:start}
-    .ghost{font-size:150px;top:-3vh;right:-4vw}
-    .pnum{font-size:9.5px;padding:6px 12px;margin-bottom:16px}
-    .proj-txt h3{font-size:38px;margin-bottom:14px}
-    .proj-txt .stand{font-size:16.5px;margin-bottom:14px}
-    .proj-txt .body{font-size:14px;line-height:1.85}
-    .pal{margin-top:22px;padding-bottom:14px}
-    .behance{margin-top:22px}
-
-    .carousel{height:min(52vh,440px)}
-    .carousel img{max-width:100%}
-    .carousel .c-dots{bottom:-24px}
-    .proj-img .deliverables{margin-top:56px;padding:22px 24px 24px;border-radius:14px}
-    .proj-img .deliverables p b{font-size:26px;margin-bottom:12px}
-    .deliverables p{font-size:13.5px;line-height:1.9}
-
-    /* misc sections */
-    .svc-grid{grid-template-columns:1fr}
-    .how-grid{grid-template-columns:1fr}
-    .fullbleed{height:38vh;margin-left:-22px;margin-right:-22px}
-    .welcome-h{font-size:34px}
-    .intro-serif{font-size:28px}
+  @media (max-width:900px){
+    nav .links{display:none}
+    .burger{display:block}
+    .hero-meta{grid-template-columns:1fr}
+    .work-grid{grid-template-columns:1fr}
+    .work-wide img{aspect-ratio:4/3}
+    .work-head{grid-template-columns:1fr}
+    .studio-grid{grid-template-columns:1fr}
+    .portrait{margin:0 auto}
+    .quotes{grid-template-columns:1fr}
+    .svc-row{grid-template-columns:50px 1fr;grid-template-rows:auto auto}
+    .svc-row p{grid-column:2}
+    .svc-row .arr{display:none}
+    .contact-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
 
-<!-- ══════════ PAGE 1 · COVER (dark) ══════════ -->
-<section class="slide dark" id="top">
-  <div class="cover-glow"></div>
-  <div class="chrome"><span></span><span class="tag">Design Portfolio</span></div>
-  <div class="slide-inner">
-    <span class="label" style="margin-bottom:22px;display:block">Logo Design · Brand Identity · Web Design</span>
-    <h1 class="cover-name-big">Natalie<br><em style="font-style:normal;color:#9BC8C4">Smith.</em></h1>
-    <p class="cover-name" style="font-size:clamp(26px,3.2vw,44px);color:rgba(245,241,232,.92);margin-top:22px">Design Portfolio.</p>
+<header id="hdr">
+  <a class="brand" href="#top"><img src="logo-badge.png" alt="Nine3 Designs badge"><b>NATALIE&nbsp;SMITH</b></a>
+  <nav>
+    <span class="links">
+      <a href="#work" data-sec="work">Work</a>
+      <a href="#studio" data-sec="studio">Studio</a>
+      <a href="#services" data-sec="services">Services</a>
+      <a href="#words" data-sec="words">Reviews</a>
+    </span>
+    <a class="cta" href="mailto:natalie@nine3designs.co.uk?subject=New%20project%20enquiry">Start a project ↗</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+<div class="mobile-nav" id="mnav">
+  <a href="#work">Work</a><a href="#studio">Studio</a><a href="#services">Services</a><a href="#words">Reviews</a><a href="#contact">Contact</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="top">
+  <div class="ball"></div>
+  <h1 class="rv">Brands<br>designed<span class="ital">to be remembered.</span></h1>
+  <hr class="hero-rule">
+  <div class="hero-meta">
+    <div>
+      <div class="meta-cols rv">
+        <div><span>Based</span><b>Sheffield, South Yorkshire</b></div>
+        <div><span>Focus</span><b>Branding · Web · Print</b></div>
+        <div><span>Clients</span><b>Independent UK businesses</b></div>
+      </div>
+      <div class="status rv" style="margin-top:22px"><span class="dot"></span>Taking on new projects now</div>
+    </div>
+    <p class="hero-intro rv">The independent design portfolio of <b style="color:var(--teal-soft)">Natalie Smith</b> — branding, websites and print with real personality, built for businesses that care how they're seen and remembered.</p>
   </div>
-  <span class="pagenum">Page 1</span>
 </section>
 
-<!-- ══════════ PAGE 2 · WELCOME ══════════ -->
-<section class="slide" id="welcome">
-  <div class="chrome"><span></span><span class="tag">Introduction</span></div>
-  <div class="swoosh"></div>
-  <div class="slide-inner">
-    <div class="welcome-grid">
-      <h2 class="welcome-h rv">Welcome to a little place we like to call <span class="hl">our design portfolio.</span></h2>
-      <div class="rv">
-        <h3 class="intro-serif">Introduction</h3>
-        <p class="intro-body">This portfolio is a collection of work designed to demonstrate the <b>creativity</b> and <b>skills</b> of a designer, and the person behind it. <b>I’m Natalie</b>, founder of <b>Nine3 Designs</b>. Before design, my world was <b>serious competitive martial arts</b>: representing <b>Team GB</b> and becoming <b>World Champion</b> twice. Then a major change in my health, my <b>heart stopping</b> and needing a <b>pacemaker</b>, then later an <b>ADHD diagnosis</b>, took my life in a completely different direction, eventually leading me to where I am now. If you’d like to discuss any of your ideas in depth, just <b>get in touch</b>; the details are on the last page.</p>
-        <div class="intro-facts">
-          <div><span>Studio</span><span>Nine3Designs</span></div>
-          <div><span>Based</span><span>Sheffield, South Yorkshire</span></div>
-          <div><span>Working with</span><span>Independent UK businesses</span></div>
-          <div><span>Reviews</span><span>5★ on Google &amp; 99designs</span></div>
-        </div>
+<!-- ══════════ WORK ══════════ -->
+<section id="work">
+  <div class="work-head">
+    <div>
+      <p class="kicker">Selected work</p>
+      <h2 class="giant rv">Selected<br><span class="ital">work.</span></h2>
+    </div>
+    <p class="rv">Branding, packaging and websites for cafés, apartments, law firms and everything in between. Nine projects, start to finish.</p>
+  </div>
+  <div class="filters rv">
+    <button class="pill on" data-f="all">All</button>
+    <button class="pill" data-f="brand">Branding</button>
+    <button class="pill" data-f="logo">Logo</button>
+    <button class="pill" data-f="web">Web</button>
+  </div>
+  <div class="work-grid">
+    <div class="work-card rv" data-cat="brand"><img src="https://natalie-smith.co.uk/beautybothy-main.jpg" alt="The Beauty Bothy brand identity" loading="lazy"><div class="info"><div><div class="t">The Beauty Bothy</div><div class="c">Brand Identity</div></div><div class="num">01</div></div></div>
+    <div class="work-card rv" data-cat="brand"><img src="https://nine3designs.co.uk/assets/images/portfolio/tails-main.jpg" alt="Tails &amp; Tides brand identity" loading="lazy"><div class="info"><div><div class="t">Tails &amp; Tides</div><div class="c">Brand Identity · Art Direction</div></div><div class="num">02</div></div></div>
+    <div class="work-card rv" data-cat="brand"><img src="https://nine3designs.co.uk/assets/images/portfolio/nordkustcoffee.jpg" alt="Nordkust Coffee packaging" loading="lazy"><div class="info"><div><div class="t">Nordkust Coffee</div><div class="c">Branding · Packaging</div></div><div class="num">03</div></div></div>
+    <div class="work-card rv" data-cat="brand"><img src="https://nine3designs.co.uk/assets/images/portfolio/esquaredbrand.jpg" alt="E Squared Coffee Corner signage" loading="lazy"><div class="info"><div><div class="t">E Squared Coffee Corner</div><div class="c">Brand Identity · Signage</div></div><div class="num">04</div></div></div>
+    <div class="work-card work-wide rv" data-cat="web"><img src="https://nine3designs.co.uk/assets/images/portfolio/aas1.webp" alt="Advanced Assessment &amp; Solutions website" loading="lazy"><div class="info"><div><div class="t">Advanced Assessment &amp; Solutions</div><div class="c">Brand Refresh · Website</div></div><div class="num">05</div></div></div>
+    <div class="work-card rv" data-cat="brand"><img src="https://natalie-smith.co.uk/cococafe-main.jpg" alt="Coco Cafe brand identity" loading="lazy"><div class="info"><div><div class="t">Coco Cafe</div><div class="c">Brand Identity · Coffee</div></div><div class="num">06</div></div></div>
+    <div class="work-card rv" data-cat="logo"><img src="https://natalie-smith.co.uk/duachy-main.jpg" alt="Duachy Apartments logo" loading="lazy"><div class="info"><div><div class="t">Duachy Apartments</div><div class="c">Logo Design · Hospitality</div></div><div class="num">07</div></div></div>
+    <div class="work-card rv" data-cat="brand"><img src="https://natalie-smith.co.uk/lopwiel-main.jpg" alt="Lopwiel outdoor brand" loading="lazy"><div class="info"><div><div class="t">Lopwiel</div><div class="c">Brand Identity · Outdoor</div></div><div class="num">08</div></div></div>
+    <div class="work-card rv" data-cat="logo"><img src="https://natalie-smith.co.uk/tevuna-main.jpg" alt="Tevuna Law logo" loading="lazy"><div class="info"><div><div class="t">Tevuna Law</div><div class="c">Logo Design · Legal</div></div><div class="num">09</div></div></div>
+  </div>
+</section>
+
+<!-- ══════════ STUDIO ══════════ -->
+<section id="studio">
+  <p class="kicker">The designer</p>
+  <h2 class="giant rv">World class,<br><span class="ital">by design.</span></h2>
+  <div class="studio-grid">
+    <div class="story rv">
+      <p>I'm <b>Natalie</b> — founder of Nine3 Designs, based in Sheffield, South Yorkshire. Before design, my world was <b>serious competitive martial arts</b>: representing <b>Team GB</b> and becoming <b>World Champion twice</b>.</p>
+      <p>Then a major change in my health — my heart stopping, a <b>pacemaker</b>, and later an <b>ADHD diagnosis</b> — took my life in a completely different direction. It led me here, to design: the same discipline, focus and drive, pointed at building brands people remember.</p>
+      <p>Every project gets the treatment I'd want as a client: <b>clear communication</b>, honest advice, and artwork that's <b>production-ready</b> — not just beautiful on screen.</p>
+      <div class="stat-row">
+        <div><span>Studio</span><b>Nine3 Designs</b></div>
+        <div><span>Based</span><b>Sheffield, S. Yorkshire</b></div>
+        <div><span>Champion</span><b>2× World · Team GB</b></div>
+        <div><span>Reviews</span><b>5★ on Google</b></div>
       </div>
     </div>
-  </div>
-  <span class="pagenum">Page 2</span>
-</section>
-
-<!-- ══════════ PAGE 3 · INDEX ══════════ -->
-<section class="slide" id="toc">
-  <div class="chrome"><span></span><span class="tag">Selected Work</span></div>
-  <div class="slide-inner">
-    <div class="index-head">
-      <span class="label">Contents</span>
-      <span class="label">09 Projects</span>
-    </div>
-    <div class="index-grid rv">
-      <!-- ══ TO ADD A PROJECT: copy one index cell + the project slide below ══ -->
-      
-      <a class="index-cell" href="#p1"><span class="n">01</span><span class="nm">The Beauty Bothy</span><span class="ct">Brand identity</span><span class="th"><img src="https://natalie-smith.co.uk/beautybothy-main.jpg" alt=""></span></a>
-      <a class="index-cell" href="#p2"><span class="n">02</span><span class="nm">Tails &amp; Tides</span><span class="ct">Brand identity · Art direction</span><span class="th"><img src="https://nine3designs.co.uk/assets/images/portfolio/tails-main.jpg" alt=""></span></a>
-      <a class="index-cell" href="#p3"><span class="n">03</span><span class="nm">Nordkust Coffee</span><span class="ct">Branding · Packaging</span><span class="th"><img src="https://nine3designs.co.uk/assets/images/portfolio/nordkustcoffee.jpg" alt=""></span></a>
-      <a class="index-cell" href="#p4"><span class="n">04</span><span class="nm">E Squared Coffee Corner</span><span class="ct">Brand identity · Signage</span><span class="th"><img src="https://nine3designs.co.uk/assets/images/portfolio/esquaredbrand.jpg" alt=""></span></a>
-      <a class="index-cell" href="#p5"><span class="n">05</span><span class="nm">Advanced Assessment &amp; Solutions</span><span class="ct">Brand refresh · Website</span><span class="th"><img src="https://nine3designs.co.uk/assets/images/portfolio/aas1.webp" alt=""></span></a>
-<a class="index-cell" href="#p6"><span class="n">06</span><span class="nm">Coco Cafe</span><span class="ct">Brand identity · Coffee</span><span class="th"><img src="https://natalie-smith.co.uk/cococafe-main.jpg" alt=""></span></a>
-<a class="index-cell" href="#p7"><span class="n">07</span><span class="nm">Duachy Apartments</span><span class="ct">Logo design · Hospitality</span><span class="th"><img src="https://natalie-smith.co.uk/duachy-main.jpg" alt=""></span></a>
-<a class="index-cell" href="#p8"><span class="n">08</span><span class="nm">Lopwiel</span><span class="ct">Brand identity · Outdoor</span><span class="th"><img src="https://natalie-smith.co.uk/lopwiel-main.jpg" alt=""></span></a>
-<a class="index-cell" href="#p9"><span class="n">09</span><span class="nm">Tevuna Law</span><span class="ct">Logo design · Legal</span><span class="th"><img src="https://natalie-smith.co.uk/tevuna-main.jpg" alt=""></span></a>
-
+    <div class="portrait rv">
+      <img src="https://natalie-smith.co.uk/natalie.png" alt="Natalie Smith, founder of Nine3 Designs">
+      <div class="tag">Hi, I'm Natalie 👋</div>
     </div>
   </div>
-  <span class="pagenum">Page 3</span>
 </section>
 
-<!-- ══════════ PAGE 4 · I'M NATALIE ══════════ -->
-<section class="slide" id="natalie">
-  <div class="chrome"><span></span><span class="tag">About</span></div>
-  <div class="slide-inner">
-    <div class="nat-grid">
-      <div class="nat-photo rv"><img src="natalie.png" alt="Natalie, founder of Nine3Designs"></div>
-      <div class="rv">
-        <h3 class="nat-h">Hi, I'm <em>Natalie.</em></h3>
-        <p class="nat-body">Brand <b>designer</b> and <b>founder</b> of Nine3Designs. An independent creative studio in <b>Sheffield,</b> South Yorkshire. I take projects from the very <b>first</b> brief and creative concept through to finished artwork and delivery, combining <b>strong visual design</b> with practical commercial <b>thinking.</b></p>
-        <p class="nat-body" style="margin-top:14px">Running my own studio has given me hands-on experience across the <b>full creative process</b>: understanding what a business actually <b>needs,</b> developing <b>concepts,</b> presenting and <b>refining</b> the work, and getting everything production-ready. That mix of creative and commercial <b>experience</b> means I understand the brief &amp; the practical realities behind it, so projects land <b>on time, on budget</b> and with <b>clear communication</b> throughout.</p>
-      </div>
-      <div class="rv">
-        <div class="nat-facts">
-          <div><span class="k">Role</span><span class="v">Brand Designer &amp; Founder, Nine3Designs</span></div>
-          <div><span class="k">Based</span><span class="v">Sheffield, South Yorkshire</span></div>
-          <div><span class="k">Tools</span><span class="v">Adobe Creative Suite · Affinity · Figma · HTML &amp; CSS</span></div>
-          <div><span class="k">Education</span><span class="v">BSc (Hons), University of Huddersfield (2:1)</span></div>
-          <div><span class="k">Platforms</span><span class="v">99designs by Vista approved · Behance · Dribbble</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="how-grid rv">
-      <div class="how"><span class="n">01</span><h5>Brief</h5><p>Understanding objectives, audience and practicalities.</p></div>
-      <div class="how"><span class="n">02</span><h5>Concept</h5><p>Developing and presenting purposeful creative.</p></div>
-      <div class="how"><span class="n">03</span><h5>Refine</h5><p>Feedback, revisions and clear rationale at every step.</p></div>
-      <div class="how"><span class="n">04</span><h5>Deliver</h5><p>Production-ready artwork, print coordination and launch.</p></div>
-    </div>
+<!-- ══════════ SERVICES ══════════ -->
+<section id="services">
+  <p class="kicker">Services</p>
+  <h2 class="giant rv">What I <span class="ital">do.</span></h2>
+  <div class="svc-list rv">
+    <div class="svc-row"><span class="n">01</span><h3>Brand Identity</h3><p>Logos, colour, type and guidelines that make a business instantly recognisable.</p><span class="arr">→</span></div>
+    <div class="svc-row"><span class="n">02</span><h3>Website Design</h3><p>Polished, professional sites that are easy to manage and built to convert.</p><span class="arr">→</span></div>
+    <div class="svc-row"><span class="n">03</span><h3>Logo Design</h3><p>Marks that hold their own at every size, from favicon to shopfront signage.</p><span class="arr">→</span></div>
+    <div class="svc-row"><span class="n">04</span><h3>Print &amp; Packaging</h3><p>Business cards, appointment cards, packaging and signage — designed to be held.</p><span class="arr">→</span></div>
+    <div class="svc-row"><span class="n">05</span><h3>Social Media</h3><p>Templates and graphics that keep every channel consistent and on-brand.</p><span class="arr">→</span></div>
+    <div class="svc-row"><span class="n">06</span><h3>Business Marketing</h3><p>Design that supports the bigger picture: launches, campaigns and beyond.</p><span class="arr">→</span></div>
   </div>
-  <span class="pagenum">Page 4</span>
-</section>
-
-<!-- ══════════ PAGE 5 · THE BEAUTY BOTHY ══════════ -->
-<section class="slide" id="p1">
-  <div class="chrome"><span></span><span class="tag">Brand Identity</span></div>
-  <div class="slide-inner">
-    <div class="proj flip">
-      <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
-<img class="on" src="https://natalie-smith.co.uk/beautybothy-main.jpg" alt="The Beauty Bothy brand identity">
-<img src="https://nine3designs.co.uk/assets/images/portfolio/beautybothy-2.jpg" alt="The Beauty Bothy brand detail">
-<img src="https://nine3designs.co.uk/assets/images/portfolio/beautybothy-3.jpg" alt="The Beauty Bothy application">
-</div>
-<div class="deliverables"><p><b>Deliverables</b>Logo Design &amp; Brand Identity · Social Media Templates</p></div>
-</div>
-      <div class="proj-txt rv">
-        <span class="ghost">01</span>
-        <span class="pnum">01 / 09</span>
-        <h3>The Beauty Bothy</h3>
-        <p class="stand">An editorial beauty brand with a softer, more luxurious feel.</p>
-        <p class="body">The Beauty Bothy wanted to step away from the usual beauty-salon look. The identity pairs <b>elegant typography</b> with <b>deep navy and warm champagne,</b> brought together by a delicate <b>dandelion-inspired</b> graphic that adds movement and lightness. Polished but never cold, with the softness running through everything from price lists to social.</p>
-
-        <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#F5F4F3"></span><span class="dot" style="background:#ACA49A"></span><span class="dot" style="background:#4F4E56"></span><span class="dot" style="background:#363946"></span><span class="dot" style="background:#2C2324"></span></div>
-      </div>
-    </div>
-  </div>
-  <span class="pagenum">Page 5</span>
-</section>
-
-
-
-<!-- ══════════ PAGE 7 · TAILS & TIDES ══════════ -->
-<section class="slide" id="p2">
-  <div class="chrome"><span></span><span class="tag">Brand Identity</span></div>
-  <div class="slide-inner">
-    <div class="proj">
-      <div class="proj-txt rv">
-        <span class="ghost">02</span>
-        <span class="pnum">02 / 09</span>
-        <h3>Tails &amp; Tides</h3>
-        <p class="stand">A fresh coastal identity, drawn straight from the sea.</p>
-        <p class="body">A coastal identity built on <b>bold typography</b>, playful details and a calm ocean palette of <b>deep teal, aqua and soft neutrals</b> alongside imagery pulled from the sea. Adventurous but relaxed, made for the outdoors without losing its polish. Custom typographic details and supporting graphics give the identity <b>personality,</b> while keeping the overall look clean and contemporary.</p>
-
-        <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#EEF0EE"></span><span class="dot" style="background:#9FC8E5"></span><span class="dot" style="background:#305261"></span><span class="dot" style="background:#A2A09B"></span><span class="dot" style="background:#615C56"></span></div>
-      </div>
-      <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
-<img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/tails-main.jpg" alt="Tails and Tides identity">
-<img src="https://nine3designs.co.uk/assets/images/portfolio/tails-2.jpg" alt="Tails and Tides brand detail">
-<img src="https://nine3designs.co.uk/assets/images/portfolio/tails-3.jpg" alt="Tails and Tides application">
-</div>
-<div class="deliverables"><p><b>Deliverables</b>Logo &amp; wordmark · Custom type details · Palette system · Brand applications</p></div>
-</div>
-    </div>
-  </div>
-  <span class="pagenum">Page 6</span>
-</section>
-
-
-
-<!-- ══════════ PAGE 9 · NORDKUST ══════════ -->
-<section class="slide" id="p3">
-  <div class="chrome"><span></span><span class="tag">Branding · Packaging</span></div>
-  <div class="slide-inner">
-    <div class="proj flip">
-      <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
-<img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/nordkustcoffee.jpg" alt="Nordkust Coffee identity">
-<img src="https://natalie-smith.co.uk/nordkust.jpg" alt="Nordkust Coffee branded cups — crafted in the north">
-<img src="https://natalie-smith.co.uk/nordkust2.jpg" alt="Nordkust Coffee takeaway bag and cups">
-</div>
-<div class="deliverables"><p><b>Deliverables</b>Identity design · Packaging · Graphic details · Brand applications</p></div>
-</div>
-      <div class="proj-txt rv">
-        <span class="ghost">03</span>
-        <span class="pnum">03 / 09</span>
-        <h3>Nordkust Coffee</h3>
-        <p class="stand">Scandinavian-inspired branding with a strong sense of place.</p>
-        <p class="body">For Nordkust Coffee we leaned into <b>coastal Nordic influences</b>, <b>strong type,</b> a restrained palette and graphic details that carry the feel across everything from bags to shop signage. The result is a coffee brand with a real <b>sense of place:</b> calm and confident, and easy to spot on a shelf.</p>
-
-        <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#E8E3E0"></span><span class="dot" style="background:#D1A89E"></span><span class="dot" style="background:#A52020"></span><span class="dot" style="background:#5B5E63"></span><span class="dot" style="background:#A2A0A0"></span></div>
-      </div>
-    </div>
-  </div>
-  <span class="pagenum">Page 7</span>
-</section>
-
-<!-- ══════════ PAGE 9 · NORDKUST GALLERY ══════════ -->
-
-<!-- ══════════ PAGE 11 · E SQUARED ══════════ -->
-<section class="slide" id="p4">
-  <div class="chrome"><span></span><span class="tag">Brand Identity · Signage</span></div>
-  <div class="slide-inner">
-    <div class="proj">
-      <div class="proj-txt rv">
-        <span class="ghost">04</span>
-        <span class="pnum">04 / 09</span>
-        <h3>E Squared Coffee Corner</h3>
-        <p class="stand">A bold, welcoming identity for a local coffee shop with personality.</p>
-        <p class="body">A full branding project covering identity design through to signage and product mockups. At the centre sits a <b>bold, condensed serif wordmark</b>, E SQUARED, with a <b>coffee-bean detail worked into the O,</b> a hand-drawn cup icon and an “EST. 2026” subline for a grounded, established feel despite being a new opening. A circular “COFFEE CORNER” ring wraps the mark, built to work on <b>round signage</b> as well as cup stickers and packaging.</p>
-
-        <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#F8F8F8"></span><span class="dot" style="background:#9B9B9B"></span><span class="dot" style="background:#505051"></span><span class="dot" style="background:#3E3E40"></span><span class="dot" style="background:#27272A"></span></div>
-      </div>
-      <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
-<img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/esquaredbrand.jpg" alt="ESquared Coffee identity">
-<img src="https://nine3designs.co.uk/assets/images/portfolio/esquared-2.jpg" alt="ESquared Coffee brand detail">
-<img src="https://nine3designs.co.uk/assets/images/portfolio/esquared-3.jpg" alt="ESquared Coffee application — hanging round sign">
-</div>
-<div class="deliverables"><p><b>Deliverables</b>Logo &amp; wordmark · Signage artwork · Cup stickers &amp; packaging · Icon set</p></div>
-</div>
-    </div>
-  </div>
-  <span class="pagenum">Page 8</span>
-</section>
-
-
-
-<!-- ══════════ PAGE 13 · ADVANCED ASSESSMENT & SOLUTIONS ══════════ -->
-<section class="slide" id="p5">
-  <div class="chrome"><span></span><span class="tag">Brand Refresh · Website</span></div>
-  <div class="slide-inner">
-    <div class="proj flip">
-      <div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
-<img class="on" src="https://nine3designs.co.uk/assets/images/portfolio/aas1.webp" alt="Advanced Assessment and Solutions website redesign">
-<img src="https://nine3designs.co.uk/assets/images/portfolio/aas2.webp" alt="Advanced Assessment and Solutions business cards">
-<img src="https://nine3designs.co.uk/assets/images/portfolio/aas3.webp" alt="Advanced Assessment and Solutions website on a phone">
-</div>
-<div class="deliverables"><p><b>Deliverables</b>Logo rebuild · Brand refresh · Social graphics · Full website design &amp; build</p></div>
-</div>
-      <div class="proj-txt rv">
-        <span class="ghost">05</span>
-        <span class="pnum">05 / 09</span>
-        <h3>Advanced Assessment &amp; Solutions</h3>
-        <p class="stand">A brand refresh and full website rebuild, from Canva hold-together to a presence Sara is proud of.</p>
-        <p class="body">Sara came to Nine3Designs after a run of disappointing experiences with previous designers. Her website was a basic Canva build that no longer reflected the professionalism of her role, and she had no way to access or manage her own domain. We began with the foundations: her <b>logo rebuilt as a clean, scalable version,</b> a considered colour palette in place of the muted greys, and social graphics for a consistent look. Then the biggest step, a <b>complete website rebuild, fully under her control</b> and consistent with her wider branding.</p>
-
-        <div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#E9EAEB"></span><span class="dot" style="background:#9E9890"></span><span class="dot" style="background:#92887C"></span><span class="dot" style="background:#625E5A"></span><span class="dot" style="background:#151B25"></span></div>
-      </div>
-    </div>
-  </div>
-  <span class="pagenum">Page 9</span>
-</section>
-
-
-
-<!-- ══════════ PROJECT · COCO CAFE ══════════ -->
-<section class="slide" id="p6">
-<div class="chrome"><span></span><span class="tag">Brand Identity · Coffee</span></div>
-<div class="slide-inner">
-<div class="proj">
-<div class="proj-txt rv">
-<span class="ghost">06</span>
-<span class="pnum">06 / 09</span>
-<h3>Coco Cafe</h3>
-<p class="stand">A warm, beachy coffee brand — coffee for everyday.</p>
-<p class="body">Coco Cafe is a <b>coastal coffee brand</b> built around a laid-back, everyday feel — <b>coffee for everyday.</b> A hand-drawn <b>palm and coconut mark</b> sits inside a soft arch, pairing relaxed line work with <b>warm sand and cream tones.</b> The identity flexes easily across <b>cups, tote bags and social,</b> staying friendly and unfussy at every size. The result feels like a little piece of the beach in every cup — <b>warm, easy-going</b> and instantly recognisable.</p>
-
-<div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#C9995F"></span><span class="dot" style="background:#F1E6D2"></span><span class="dot" style="background:#4A3527"></span><span class="dot" style="background:#B0472F"></span></div>
-</div>
-<div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
-<img class="on" src="https://natalie-smith.co.uk/cococafe-main.jpg" alt="Coco Cafe brand identity">
-<img src="https://natalie-smith.co.uk/cococafe-2.jpg" alt="Coco Cafe logo variations">
-<img src="https://natalie-smith.co.uk/cococafe-3.jpg" alt="Coco Cafe branded cups on the beach">
-<img src="https://natalie-smith.co.uk/cococafe-4.jpg" alt="Coco Cafe tote bag and iced coffee">
-<img src="https://natalie-smith.co.uk/cococafe-5.jpg" alt="Coco Cafe social media reveal">
-</div>
-<div class="deliverables"><p><b>Deliverables</b>Logo suite · Logo variations · Cup branding · Merchandise · Social content</p></div>
-</div>
-</div>
-</div>
-<span class="pagenum">Page 10</span>
-</section>
-
-<!-- ══════════ PROJECT · DUACHY APARTMENTS ══════════ -->
-<section class="slide" id="p7">
-<div class="chrome"><span></span><span class="tag">Logo Design · Hospitality</span></div>
-<div class="slide-inner">
-<div class="proj">
-<div class="proj-txt rv">
-<span class="ghost">07</span>
-<span class="pnum">07 / 09</span>
-<h3>Duachy Apartments</h3>
-<p class="stand">A premium monogram for an elevated guest experience.</p>
-<p class="body">Duachy Apartments needed an identity that felt <b>premium</b> from the very first glance. A <b>deep green monogram</b> — an eagle formed from interlocking letterforms — sets a <b>confident, boutique tone,</b> carried through a full <b>guest experience:</b> guest guides, luggage tags, amenity bottles and coasters. <b>Gold detailing</b> against the rich green keeps everything feeling considered and high-end — apartment stays that feel closer to a <b>boutique hotel</b> than a rental.</p>
-
-<div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#2A5240"></span><span class="dot" style="background:#B7965A"></span><span class="dot" style="background:#EDEDE6"></span><span class="dot" style="background:#C8CCC8"></span></div>
-</div>
-<div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
-<img class="on" src="https://natalie-smith.co.uk/duachy-main.jpg" alt="Duachy Apartments logo design">
-<img src="https://natalie-smith.co.uk/duachy-2.jpg" alt="Duachy Apartments guest stationery and amenities">
-</div>
-<div class="deliverables"><p><b>Deliverables</b>Logo suite · Guest guide · Luggage tags · Amenity labels · Coasters</p></div>
-</div>
-</div>
-</div>
-<span class="pagenum">Page 11</span>
-</section>
-
-<!-- ══════════ PROJECT · LOPWIEL ══════════ -->
-<section class="slide" id="p8">
-<div class="chrome"><span></span><span class="tag">Brand Identity · Outdoor</span></div>
-<div class="slide-inner">
-<div class="proj">
-<div class="proj-txt rv">
-<span class="ghost">08</span>
-<span class="pnum">08 / 09</span>
-<h3>Lopwiel</h3>
-<p class="stand">An outdoor brand built to move — from app icon to adventure kit.</p>
-<p class="body">Lopwiel is an outdoor brand built around the descent — <b>start the descent</b> and keep going. The mark pairs a <b>mountain peak</b> with a flowing downhill line in a single icon that works just as hard at <b>app-icon size</b> as it does embossed on a <b>bottle</b> or set against landscape photography. A fresh palette of <b>deep green, mist and porcelain</b> keeps the brand airy and modern. Clean, versatile and quietly confident — ready to grow across <b>app, merchandise</b> and the mountains themselves.</p>
-
-<div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#2E4632"></span><span class="dot" style="background:#DCE9E5"></span><span class="dot" style="background:#101418"></span><span class="dot" style="background:#9BC8C4"></span></div>
-</div>
-<div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
-<img class="on" src="https://natalie-smith.co.uk/lopwiel-main.jpg" alt="Lopwiel brand identity suite">
-<img src="https://natalie-smith.co.uk/lopwiel-2.jpg" alt="Lopwiel mobile app icon">
-<img src="https://natalie-smith.co.uk/lopwiel-3.jpg" alt="Lopwiel branded bottle mockup">
-</div>
-<div class="deliverables"><p><b>Deliverables</b>Logo suite · App icon · Bottle &amp; merchandise · Brand guidelines</p></div>
-</div>
-</div>
-</div>
-<span class="pagenum">Page 12</span>
-</section>
-
-<!-- ══════════ PROJECT · TEVUNA LAW ══════════ -->
-<section class="slide" id="p9">
-<div class="chrome"><span></span><span class="tag">Logo Design · Legal</span></div>
-<div class="slide-inner">
-<div class="proj">
-<div class="proj-txt rv">
-<span class="ghost">09</span>
-<span class="pnum">09 / 09</span>
-<h3>Tevuna Law</h3>
-<p class="stand">A confident, modern mark for real attorneys and flat-fee clarity.</p>
-<p class="body">Tevuna Law is a legal brand built on <b>straight answers</b> and <b>clear pricing.</b> The mark draws on classical architecture — a stylised <b>column portico</b> — giving the identity instant <b>authority</b> and a sense of establishment, while clean geometric line work keeps it <b>modern</b> rather than traditional. Deep navy sets a <b>serious, trustworthy tone,</b> lifted by a strong blue that feels sharp and approachable. Paired with bold, spaced capitals and the positioning line <b>'Real attorneys | Strategic answers | Flat fees',</b> the result is a logo that feels solid, direct and built on trust.</p>
-
-<div class="pal rv"><span class="lbl">Palette</span><span class="dot" style="background:#1C2B3A"></span><span class="dot" style="background:#4E93C9"></span><span class="dot" style="background:#BFD9E8"></span><span class="dot" style="background:#FFFFFF"></span></div>
-</div>
-<div class="proj-img rv"><div class="backdrop"></div><div class="carousel">
-<img class="on" src="https://natalie-smith.co.uk/tevuna-main.jpg" alt="Tevuna Law logo design">
-<img src="https://natalie-smith.co.uk/tevuna-2a.jpg" alt="Tevuna Law flyer design">
-<img src="https://natalie-smith.co.uk/tevuna-2b.jpg" alt="Tevuna Law reception signage">
-</div>
-<div class="deliverables"><p><b>Deliverables</b>Logo suite · Flyer · Reception signage · Brand guidelines</p></div>
-</div>
-</div>
-</div>
-<span class="pagenum">Page 13</span>
 </section>
 
 <!-- ══════════ KIND WORDS ══════════ -->
-<section class="slide" id="words">
-  <div class="chrome"><span></span><span class="tag">Kind Words</span></div>
-  <div class="slide-inner">
-    <div class="index-head">
-      <span class="label">Kind words</span>
-      <span class="label">REAL REVIEWS · REAL PROJECTS</span>
-    </div>
-    <div class="quotes-grid rv">
-      <div class="quote">
-        <div class="qm">“</div>
-        <p>Nat recently did some digital designs for our business and I couldn't be happier with the final outcome! Nat is super responsive and nothing is ever too much trouble. We'll definitely be working with Nat again on other projects!</p>
-        <cite>OSG Home Solutions<span class="role">Digital design project</span></cite>
-      </div>
-      <div class="quote">
-        <div class="qm">“</div>
-        <p>I had Natalie create some designs for me. The whole time it was made clear I could have whatever I needed — even when I was happy with the final touches, she took it to the next level. Thanks for being so patient!</p>
-        <cite>DFM Housing<span class="role">Design project</span></cite>
-      </div>
-      <div class="quote">
-        <div class="qm">“</div>
-        <p>I asked. Nat delivered. And I am OBSESSED! These appointment cards are everything I wanted and more — perfection!</p>
-        <cite>Paige Oldham Hair Design<span class="role">Print design project</span></cite>
-      </div>
-    </div>
-    <a class="gr-link rv" href="https://www.google.com/search?q=google+nine+3+designs" target="_blank" rel="noopener">Read our 5★ Google reviews ↗</a>
+<section id="words">
+  <p class="kicker">Kind words</p>
+  <h2 class="giant rv">Real reviews,<br><span class="ital">real projects.</span></h2>
+  <div class="quotes rv">
+    <div class="quote"><div class="qm">“</div><p>Nat recently did some digital designs for our business and I couldn't be happier with the final outcome! Nat is super responsive and nothing is ever too much trouble. We'll definitely be working with Nat again on other projects!</p><cite><b>OSG Home Solutions</b><span>Digital design project</span></cite></div>
+    <div class="quote"><div class="qm">“</div><p>I had Natalie create some designs for me. The whole time it was made clear I could have whatever I needed — even when I was happy with the final touches, she took it to the next level. Thanks for being so patient!</p><cite><b>DFM Housing</b><span>Design project</span></cite></div>
+    <div class="quote"><div class="qm">“</div><p>I asked. Nat delivered. And I am OBSESSED! These appointment cards are everything I wanted and more — perfection!</p><cite><b>Paige Oldham Hair Design</b><span>Print design project</span></cite></div>
   </div>
-  <span class="pagenum">Page 14</span>
+  <a class="g-link" href="https://www.google.com/search?q=nine+3+designs+reviews" target="_blank" rel="noopener">Read our 5★ Google reviews ↗</a>
 </section>
 
-<!-- ══════════ PAGE 25 · SERVICES ══════════ -->
-<section class="slide" id="services">
-  <div class="chrome"><span></span><span class="tag">Services</span></div>
-  <div class="slide-inner">
-    <h3 class="big-title rv">What Nine3 <em>does.</em></h3>
-    <div class="svc-grid rv">
-      <div class="svc"><span class="n">01</span><h4>Brand Identity</h4><p>Logos, colour, type and guidelines that make a business <b>instantly recognisable.</b></p></div>
-      <div class="svc"><span class="n">02</span><h4>Website Design</h4><p>Polished, professional sites that are easy to manage and <b>built to convert.</b></p></div>
-      <div class="svc"><span class="n">03</span><h4>Logo Design</h4><p>Marks that hold their own at every size, from favicon to <b>shopfront signage.</b></p></div>
-      <div class="svc"><span class="n">04</span><h4>Print &amp; Packaging</h4><p>Business cards, appointment cards, packaging and signage, <b>designed to be held.</b></p></div>
-      <div class="svc"><span class="n">05</span><h4>Social Media</h4><p>Templates and graphics that keep every channel <b>consistent and on-brand.</b></p></div>
-      <div class="svc"><span class="n">06</span><h4>Business Marketing</h4><p>Design that supports the bigger picture, <b>launches, campaigns and beyond.</b></p></div>
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact">
+  <p class="kicker">Get in touch</p>
+  <h2 class="giant rv">Your project,<br><span class="ital">next.</span></h2>
+  <div class="contact-grid">
+    <div class="contact-note rv">
+      <p>Tell me a little about your business, where you're headed and what you want to create. Every project starts with a conversation. <b>No pressure, no jargon,</b> just an honest chat about what design could do for you.</p>
+      <a class="big-cta" href="mailto:natalie@nine3designs.co.uk?subject=New%20project%20enquiry">Start a project ↗</a>
+    </div>
+    <div class="rows rv">
+      <a href="mailto:natalie@nine3designs.co.uk"><span>natalie@nine3designs.co.uk</span><span class="lbl">Email ↗</span></a>
+      <a href="https://nine3designs.co.uk" target="_blank" rel="noopener"><span>nine3designs.co.uk</span><span class="lbl">Website ↗</span></a>
+      <a href="https://www.google.com/search?q=nine+3+designs+reviews" target="_blank" rel="noopener"><span>Google Reviews</span><span class="lbl">Rated 5★ ↗</span></a>
+      <a href="https://wa.me/447343070273?text=Hi%20Nine3!%20I%27d%20like%20to%20chat%20about%20a%20design%20project." target="_blank" rel="noopener"><span>WhatsApp</span><span class="lbl">Chat ↗</span></a>
+      <a href="https://calendar.google.com/calendar/u/0/r/eventedit?vcon=meet&amp;dates=20261012T170000&amp;hl=en&amp;add=natalie@nine3designs.co.uk&amp;text=Free%20discovery%20call%20with%20Nine3%20Designs&amp;details=Free%2015-minute%20video%20call%20to%20discuss%20your%20project." target="_blank" rel="noopener"><span>Book a free discovery call</span><span class="lbl">Book a call ↗</span></a>
     </div>
   </div>
-  <span class="pagenum">Page 15</span>
 </section>
 
-<!-- ══════════ PAGE 26 · CLOSING / CONTACT (dark) ══════════ -->
-<section class="slide dark" id="contact">
-  <div class="cover-glow"></div>
-  <div class="chrome"><span></span><span class="tag">Get In Touch</span></div>
-  <div class="slide-inner">
-    <h2 class="close-title rv">Your project could<br>be <em>next.</em></h2>
-    <div class="close-grid">
-      <p class="close-note rv">Tell me a little about your business, where you're headed and what you want to create. Every project starts with a conversation. <b>No pressure, no jargon,</b> just an honest chat about what design could do for you.</p>
-      <div class="contact-rows rv">
-        <a href="mailto:natalie@nine3designs.co.uk"><span>natalie@nine3designs.co.uk</span><span class="lbl">Email ↗</span></a>
-        <a href="https://nine3designs.co.uk" target="_blank" rel="noopener"><span>nine3designs.co.uk</span><span class="lbl">Website ↗</span></a>
-        <a href="https://www.google.com/search?q=google+nine+3+designs" target="_blank" rel="noopener"><span>Google Reviews</span><span class="lbl">Rated 5★ · Read ↗</span></a>
-        <a href="https://wa.me/447343070273?text=Hi%20Nine3!%20I%27d%20like%20to%20chat%20about%20a%20design%20project." target="_blank" rel="noopener"><span>WhatsApp</span><span class="lbl">Chat ↗</span></a>
-        <a href="https://calendar.google.com/calendar/u/0/r/eventedit?vcon=meet&amp;dates=20261012T170000&amp;hl=en&amp;add=natalie@nine3designs.co.uk&amp;text=Free%20discovery%20call%20with%20Nine3%20Designs&amp;details=Free%2015-minute%20video%20call%20to%20discuss%20your%20project.%20Booked%20via%20nine3designs.co.uk" target="_blank" rel="noopener"><span>Book a free discovery call</span><span class="lbl">Book a call ↗</span></a>
-      </div>
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="foot-grid">
+    <img src="logo-cream.png" alt="Nine3 Designs wordmark">
+    <div class="foot-links">
+      <a href="#work">Work</a><a href="#studio">Studio</a><a href="#services">Services</a><a href="#words">Reviews</a><a href="#contact">Contact</a>
     </div>
   </div>
-  <span class="pagenum">Page 16</span>
-</section>
+  <div class="foot-base">
+    <span>© Nine3 Designs · Natalie Smith</span>
+    <span>Designed &amp; built in South Yorkshire</span>
+  </div>
+</footer>
 
 <script>
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{threshold:.12});
-  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+(function(){
+  var hdr=document.getElementById('hdr');
+  var onScroll=function(){hdr.classList.toggle('solid',window.scrollY>40)};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  // ---------- deck navigation ----------
-  const slides = [...document.querySelectorAll('.slide')];
-  const bar = document.createElement('div'); bar.className='progress'; document.body.appendChild(bar);
-  const nav = document.createElement('div'); nav.className='deck-nav';
-  nav.innerHTML = '<button class="deck-btn" id="dPrev" aria-label="Previous page">←</button><span class="count" id="dCount">01 — 17</span><button class="deck-btn" id="dNext" aria-label="Next page">→</button>';
-  document.body.appendChild(nav);
-  const hint = document.createElement('div'); hint.className='deck-hint'; hint.textContent='Scroll · or use ← → keys'; document.body.appendChild(hint);
-  setTimeout(()=>hint.style.opacity='0', 5000);
+  var mnav=document.getElementById('mnav'),burger=document.getElementById('burger');
+  burger.onclick=function(){mnav.classList.toggle('open')};
+  mnav.querySelectorAll('a').forEach(function(a){a.onclick=function(){mnav.classList.remove('open')}});
 
-  let cur = 0;
-  function update(){
-    const mid = window.scrollY + window.innerHeight/2;
-    let best = 0, bestDist = Infinity;
-    slides.forEach((s,i)=>{
-      const t = s.offsetTop + s.offsetHeight/2;
-      const d = Math.abs(t - mid);
-      if(d < bestDist){ bestDist = d; best = i; }
-    });
-    cur = best;
-    const n = slides.length;
-    document.getElementById('dCount').textContent = String(cur+1).padStart(2,'0') + ' — ' + String(n).padStart(2,'0');
-    document.getElementById('dPrev').disabled = cur === 0;
-    document.getElementById('dNext').disabled = cur === n-1;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
-  }
-  function go(i){
-    i = Math.max(0, Math.min(slides.length-1, i));
-    slides[i].scrollIntoView({behavior:'smooth'});
-  }
-  document.getElementById('dPrev').onclick = ()=>go(cur-1);
-  document.getElementById('dNext').onclick = ()=>go(cur+1);
-  window.addEventListener('keydown', (e)=>{
-    if(['ArrowDown','ArrowRight','PageDown'].includes(e.key)){ e.preventDefault(); go(cur+1); }
-    if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){ e.preventDefault(); go(cur-1); }
-    if(e.key === 'Home'){ e.preventDefault(); go(0); }
-    if(e.key === 'End'){ e.preventDefault(); go(slides.length-1); }
-  });
-  let raf = null;
-  window.addEventListener('scroll', ()=>{ if(raf) return; raf = requestAnimationFrame(()=>{ update(); raf = null; }); });
-  window.addEventListener('resize', update);
-  update();
-</script>
-<script>
-  // ---------- project carousels ----------
-  (function(){
-    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    document.querySelectorAll('.carousel').forEach(function(c){
-      var imgs = [].slice.call(c.querySelectorAll('img'));
-      if(imgs.length < 2) return;
-      var dots = document.createElement('div'); dots.className = 'c-dots';
-      imgs.forEach(function(_, k){
-        var d = document.createElement('i'); if(k === 0) d.className = 'on';
-        d.addEventListener('click', function(){ show(k); play(); });
-        dots.appendChild(d);
-      });
-      c.appendChild(dots);
-      var i = 0, t = null;
-      function layout(){
-        imgs.forEach(function(im, k){
-          im.classList.remove('on','side-l','side-r','off');
-          if(k === i){ im.classList.add('on'); return; }
-          if(k === (i + 1) % imgs.length){ im.classList.add('side-r'); return; }
-          if(k === (i - 1 + imgs.length) % imgs.length){ im.classList.add('side-l'); return; }
-          im.classList.add('off');
-        });
-        [].forEach.call(dots.children, function(d, k){ d.classList.toggle('on', k === i); });
-      }
-      function show(n){ i = (n + imgs.length) % imgs.length; layout(); }
-      function stop(){ if(t){ clearInterval(t); t = null; } }
-      function play(){ stop(); if(!reduce) t = setInterval(function(){ show(i + 1); }, 4200); }
-      c.addEventListener('mouseenter', stop);
-      c.addEventListener('mouseleave', play);
-      layout(); play();
-    });
-  })();
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+  // filters
+  var pills=document.querySelectorAll('.pill'),cards=document.querySelectorAll('.work-card');
+  pills.forEach(function(p){p.onclick=function(){
+    pills.forEach(function(x){x.classList.remove('on')});p.classList.add('on');
+    var f=p.dataset.f;
+    cards.forEach(function(c){c.classList.toggle('hide',f!=='all'&&c.dataset.cat!==f)});
+  }});
+
+  // active nav
+  var secs=['work','studio','services','words'];
+  var navLinks=document.querySelectorAll('nav [data-sec]');
+  var so=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){navLinks.forEach(function(a){a.classList.toggle('active',a.dataset.sec===e.target.id)})}
+  })},{threshold:.4});
+  secs.forEach(function(id){var s=document.getElementById(id);if(s)so.observe(s)});
+})();
 </script>
 </body>
 </html>
