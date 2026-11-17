@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Natalie Smith — Design Portfolio</title>
-<meta name="description" content="The portfolio of Natalie Smith — branding, websites and print design made in South Yorkshire.">
+<title>Natalie Smith, Design Portfolio</title>
+<meta name="description" content="The portfolio of Natalie Smith, branding, websites and print design made in South Yorkshire.">
 <link rel="icon" type="image/png" href="logo-badge.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@1,9..144,300..600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Poiret+One&display=swap" rel="stylesheet">
 <style>
   :root{
     --petrol:#174B50; --petrol-deep:#123B40; --teal:#2A6A70; --teal-soft:#7FB5B0;
     --porcelain:#F5F1E8; --mist:#DCE9E5; --graphite:#272B2B; --cream:#F5F1E8;
-    --sans:'Inter',system-ui,sans-serif; --disp:'Anton',sans-serif; --serif:'Fraunces',serif;
+    --sans:'Montserrat',system-ui,sans-serif; --disp:'Poiret One',sans-serif; --serif:'Poiret One',sans-serif;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -53,7 +53,7 @@
     background:radial-gradient(1100px 700px at 82% 30%,rgba(42,106,112,.55),transparent 60%),var(--petrol);position:relative;overflow:hidden}
   .hero h1{font-family:var(--disp);font-weight:400;text-transform:uppercase;line-height:.92;letter-spacing:.01em;
     font-size:clamp(64px,11.5vw,196px);color:var(--cream);position:relative;z-index:1}
-  .hero h1 .ital{display:block;font-family:var(--serif);font-style:italic;font-weight:340;text-transform:none;
+  .hero h1 .ital{display:block;font-family:var(--serif);font-style:normal;font-weight:340;text-transform:none;
     color:var(--teal-soft);letter-spacing:0;font-size:1.06em;line-height:1.05;padding-bottom:.12em}
   .hero h1 .ital{transition:color .5s ease}
   .hero h1 .ital:hover{color:var(--porcelain)}
@@ -64,7 +64,7 @@
   .hero-meta{display:grid;grid-template-columns:1fr auto;gap:clamp(24px,4vw,60px);padding:22px 0 clamp(24px,4vh,40px);align-items:start}
   .meta-cols{display:flex;gap:clamp(28px,5vw,90px);flex-wrap:wrap}
   .meta-cols div span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:6px}
-  .meta-cols div b{font-family:var(--serif);font-style:italic;font-weight:420;font-size:20px}
+  .meta-cols div b{font-family:var(--serif);font-style:normal;font-weight:420;font-size:20px}
   .status{display:flex;align-items:center;gap:10px;font-size:13.5px;opacity:.85}
   .dot{width:8px;height:8px;border-radius:50%;background:var(--teal-soft);flex:none}
   .status .dot{animation:pulse 2.4s ease-in-out infinite}
@@ -75,7 +75,7 @@
   section{padding:clamp(70px,11vh,130px) clamp(20px,4vw,56px)}
   .kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.55;margin-bottom:18px}
   .giant{font-family:var(--disp);font-weight:400;text-transform:uppercase;line-height:.92;font-size:clamp(52px,9.5vw,150px)}
-  .giant .ital{font-family:var(--serif);font-style:italic;font-weight:340;text-transform:none;color:var(--teal);letter-spacing:0;font-size:1.04em}
+  .giant .ital{font-family:var(--serif);font-style:normal;font-weight:340;text-transform:none;color:var(--teal);letter-spacing:0;font-size:1.04em}
   .rule{border:0;border-top:1px solid rgba(39,43,43,.25);margin:clamp(28px,5vh,48px) 0}
   .rule.on-dark{border-color:rgba(245,241,232,.25)}
 
@@ -116,7 +116,7 @@
     padding:10px 18px;font-size:12px;font-weight:600;letter-spacing:.06em;box-shadow:0 10px 26px rgba(0,0,0,.3)}
   .stat-row{display:flex;gap:clamp(24px,4vw,70px);flex-wrap:wrap;margin-top:clamp(30px,5vh,54px)}
   .stat-row div span{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.55;margin-bottom:6px}
-  .stat-row div b{font-family:var(--serif);font-style:italic;font-weight:420;font-size:21px}
+  .stat-row div b{font-family:var(--serif);font-style:normal;font-weight:420;font-size:21px}
 
   /* ---------- services ---------- */
   #services{background:var(--porcelain);color:var(--graphite)}
@@ -199,6 +199,9 @@
   @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
   @media (prefers-reduced-motion:reduce){#loader{display:none}body.lock{overflow:auto}}
 
+  /* Poiret One faux-bold for display text */
+  .hero h1,.giant,.mobile-nav a,.brand b,.svc-row h3,#loader .word b,.work-card .num,.svc-row .n{font-weight:700}
+
   /* ---------- responsive ---------- */
   @media (max-width:900px){
     nav .links{display:none}
@@ -252,7 +255,7 @@
       </div>
       <div class="status rv" style="margin-top:22px"><span class="dot"></span>Taking on new projects now</div>
     </div>
-    <p class="hero-intro rv">The independent design portfolio of <b style="color:var(--teal-soft)">Natalie Smith</b> — branding, websites and print with real personality, built for businesses that care how they're seen and remembered.</p>
+    <p class="hero-intro rv">The independent design portfolio of <b style="color:var(--teal-soft)">Natalie Smith</b>, branding, websites and print with real personality, built for businesses that care how they're seen and remembered.</p>
   </div>
 </section>
 
@@ -290,9 +293,9 @@
   <h2 class="giant rv">World class,<br><span class="ital">by design.</span></h2>
   <div class="studio-grid">
     <div class="story rv">
-      <p>I'm <b>Natalie</b> — founder of Nine3 Designs, based in Sheffield, South Yorkshire. Before design, my world was <b>serious competitive martial arts</b>: representing <b>Team GB</b> and becoming <b>World Champion twice</b>.</p>
-      <p>Then a major change in my health — my heart stopping, a <b>pacemaker</b>, and later an <b>ADHD diagnosis</b> — took my life in a completely different direction. It led me here, to design: the same discipline, focus and drive, pointed at building brands people remember.</p>
-      <p>Every project gets the treatment I'd want as a client: <b>clear communication</b>, honest advice, and artwork that's <b>production-ready</b> — not just beautiful on screen.</p>
+      <p>I'm <b>Natalie</b>, founder of Nine3 Designs, based in Sheffield, South Yorkshire. Before design, my world was <b>serious competitive martial arts</b>: representing <b>Team GB</b> and becoming <b>World Champion twice</b>.</p>
+      <p>Then a major change in my health, my heart stopping, a <b>pacemaker</b>, and later an <b>ADHD diagnosis</b>, took my life in a completely different direction. It led me here, to design: the same discipline, focus and drive, pointed at building brands people remember.</p>
+      <p>Every project gets the treatment I'd want as a client: <b>clear communication</b>, honest advice, and artwork that's <b>production-ready</b>, not just beautiful on screen.</p>
       <div class="stat-row">
         <div><span>Studio</span><b>Nine3 Designs</b></div>
         <div><span>Based</span><b>Sheffield, S. Yorkshire</b></div>
@@ -315,7 +318,7 @@
     <div class="svc-row"><span class="n">01</span><h3>Brand Identity</h3><p>Logos, colour, type and guidelines that make a business instantly recognisable.</p><span class="arr">→</span></div>
     <div class="svc-row"><span class="n">02</span><h3>Website Design</h3><p>Polished, professional sites that are easy to manage and built to convert.</p><span class="arr">→</span></div>
     <div class="svc-row"><span class="n">03</span><h3>Logo Design</h3><p>Marks that hold their own at every size, from favicon to shopfront signage.</p><span class="arr">→</span></div>
-    <div class="svc-row"><span class="n">04</span><h3>Print &amp; Packaging</h3><p>Business cards, appointment cards, packaging and signage — designed to be held.</p><span class="arr">→</span></div>
+    <div class="svc-row"><span class="n">04</span><h3>Print &amp; Packaging</h3><p>Business cards, appointment cards, packaging and signage, designed to be held.</p><span class="arr">→</span></div>
     <div class="svc-row"><span class="n">05</span><h3>Social Media</h3><p>Templates and graphics that keep every channel consistent and on-brand.</p><span class="arr">→</span></div>
     <div class="svc-row"><span class="n">06</span><h3>Business Marketing</h3><p>Design that supports the bigger picture: launches, campaigns and beyond.</p><span class="arr">→</span></div>
   </div>
@@ -327,8 +330,8 @@
   <h2 class="giant rv">Real reviews,<br><span class="ital">real projects.</span></h2>
   <div class="quotes rv">
     <div class="quote"><div class="qm">“</div><p>Nat recently did some digital designs for our business and I couldn't be happier with the final outcome! Nat is super responsive and nothing is ever too much trouble. We'll definitely be working with Nat again on other projects!</p><cite><b>OSG Home Solutions</b><span>Digital design project</span></cite></div>
-    <div class="quote"><div class="qm">“</div><p>I had Natalie create some designs for me. The whole time it was made clear I could have whatever I needed — even when I was happy with the final touches, she took it to the next level. Thanks for being so patient!</p><cite><b>DFM Housing</b><span>Design project</span></cite></div>
-    <div class="quote"><div class="qm">“</div><p>I asked. Nat delivered. And I am OBSESSED! These appointment cards are everything I wanted and more — perfection!</p><cite><b>Paige Oldham Hair Design</b><span>Print design project</span></cite></div>
+    <div class="quote"><div class="qm">“</div><p>I had Natalie create some designs for me. The whole time it was made clear I could have whatever I needed, even when I was happy with the final touches, she took it to the next level. Thanks for being so patient!</p><cite><b>DFM Housing</b><span>Design project</span></cite></div>
+    <div class="quote"><div class="qm">“</div><p>I asked. Nat delivered. And I am OBSESSED! These appointment cards are everything I wanted and more, perfection!</p><cite><b>Paige Oldham Hair Design</b><span>Print design project</span></cite></div>
   </div>
   <a class="g-link" href="https://www.google.com/search?q=nine+3+designs+reviews" target="_blank" rel="noopener">Read our 5★ Google reviews ↗</a>
 </section>
