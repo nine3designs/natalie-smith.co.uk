@@ -4,8 +4,12 @@
 document.getElementById('f').addEventListener('load',function(){
   setTimeout(function(){
     var d=document.getElementById('f').contentDocument;
-    d.querySelectorAll('.work-card')[6].click();
-  },4200);
+    d.getElementById('work').scrollIntoView();
+  },4300);
+  setTimeout(function(){
+    var d=document.getElementById('f').contentDocument;
+    d.querySelectorAll('.work-card')[4].click();
+  },5600);
 });
 </script>
 </body>
